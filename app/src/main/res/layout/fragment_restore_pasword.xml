@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Restablecer contrasena"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrowbackwards" />
+
+    <ImageView
+        android:id="@+id/arrowbackwards"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="356dp"
+        android:src="@drawable/arrowback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="354dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Escribe la direccion de tu correo electronico asociado a tu cuenta y crea tu nueva contrasena y luego confirma el cambio!"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="365dp"
+        android:layout_height="66.12dp"
+        android:layout_marginTop="36dp"
+        android:width="2dp"
+        android:background="@drawable/shapebutton"
+        android:color="@color/white"
+        android:drawableLeft="@drawable/emailicon"
+        android:hint="Correo electronico"
+        android:paddingLeft="15dp"
+        android:radius="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/codigoverificacion"
+        android:layout_width="365dp"
+        android:layout_height="66.12dp"
+        android:layout_marginTop="24dp"
+        android:width="2dp"
+        android:background="@drawable/shapebutton"
+        android:color="@color/white"
+        android:drawableLeft="@drawable/codeicon"
+        android:hint="Codigo de verificacion"
+        android:paddingLeft="15dp"
+        android:radius="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="365dp"
+        android:layout_height="66.12dp"
+        android:layout_marginTop="16dp"
+        android:width="2dp"
+        android:background="@drawable/shapebutton"
+        android:color="@color/white"
+        android:drawableLeft="@drawable/passwordicon"
+        android:hint="  Nueva contrasena"
+        android:paddingLeft="15dp"
+        android:radius="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codigoverificacion" />
+
+
+    <EditText
+        android:id="@+id/passwordrecofEditText"
+        android:layout_width="365dp"
+        android:layout_height="66.12dp"
+        android:layout_marginTop="16dp"
+        android:width="2dp"
+        android:background="@drawable/shapebutton"
+        android:color="@color/white"
+        android:drawableLeft="@drawable/passwordicon"
+        android:hint="  Confirmar contrasena"
+        android:paddingLeft="15dp"
+        android:radius="10dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#FF018786"
+        android:text="Restablecer contrasena"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordrecofEditText" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

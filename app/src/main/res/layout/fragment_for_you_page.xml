@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForYouPage"
+
+    android:background="@color/foryoupagebackground"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/sloganid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SB"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <ImageView
+        android:layout_width="82dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="52dp"
+        android:scaleType="center"
+        android:src="@drawable/profilepic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/marketplacetextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Marketplace"
+        android:textColor="@color/white"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sloganid" />
+
+
+    <TextView
+        android:id="@+id/sellaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="Vender"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketplacetextview" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="|"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/sellaction"
+        app:layout_constraintTop_toBottomOf="@+id/marketplacetextview" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="90dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FF018786"
+        android:text="Para ti"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/marketplacetextview" />
+
+
+    <TextView
+        android:id="@+id/spacer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="|"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/marketplacetextview" />
+
+    <TextView
+        android:id="@+id/categoriesaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="Categories"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="@+id/spacer2"
+        app:layout_constraintTop_toBottomOf="@+id/marketplacetextview" />
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="340dp"
+        android:layout_height="56dp"
+        app:iconifiedByDefault="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/search_view_bg"
+        android:layoutDirection="rtl"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:queryHint="Buscar"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
