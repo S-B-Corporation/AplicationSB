@@ -1,6 +1,5 @@
 package com.mcmp2023.s
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,27 +8,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragmentLogin.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragmentLogin : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var emailTextInputLayout: TextInputLayout
+    private lateinit var passwordTextInputLayout: TextInputLayout
+    private lateinit var buttonLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -38,11 +29,21 @@ class fragmentLogin : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor = resources.getColor(R.color.otheractivitys)
+
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        emailTextInputLayout = view.findViewById(R.id.TextFieldLoginEmail)
+        passwordTextInputLayout = view.findViewById(R.id.TextFieldLoginPassword)
+        buttonLogin = view.findViewById(R.id.arrowbackwards)
+
+        buttonLogin.setOnClickListener {
+            validateLogin()
         }
-        return inflater.inflate(R.layout.fragment_login, container, false)
-    }
+
+
+
+
+        return view    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,29 +52,18 @@ class fragmentLogin : Fragment() {
         view.findViewById<TextView>(R.id.textView3).setOnClickListener {
             findNavController().navigate(R.id.action_fragmentLogin_to_restorePasword)
         }
+    }
 
-        view.findViewById<Button>(R.id.buttonlogin).setOnClickListener{
-            findNavController().navigate(R.id.action_fragmentLogin_to_forYouPage)
+    private fun validateLogin() {
+        val email = emailTextInputLayout.editText?.text.toString().trim()
+        val password = passwordTextInputLayout.editText?.text.toString().trim()
+
+        if (email.isBlank()) {
+            emailTextInputLayout.error = "Este campo es necesario"
+        }
+        if (password.isBlank()) {
+            passwordTextInputLayout.error = "Este campop es neceario"
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragmentLogin.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragmentLogin().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
