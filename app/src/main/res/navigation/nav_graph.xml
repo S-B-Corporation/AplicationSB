@@ -25,11 +25,6 @@
             app:destination="@id/restorePasword"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_enter_anim" />
-        <action
-            android:id="@+id/action_fragmentLogin_to_forYouPage"
-            app:destination="@id/forYouPage"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
@@ -42,9 +37,4 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
-    <fragment
-        android:id="@+id/forYouPage"
-        android:name="com.mcmp2023.s.ForYouPage"
-        android:label="fragment_for_you_page"
-        tools:layout="@layout/fragment_for_you_page" />
 </navigation>
