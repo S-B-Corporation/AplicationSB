@@ -16,6 +16,8 @@ buildscript {
     }
 
     ext {
+        ifecycle_version = "2.6.1"
+        arch_version = "2.2.0"
         nav_version = "2.5.3"
     }
 }
