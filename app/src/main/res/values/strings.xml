@@ -22,4 +22,6 @@
     <string name="login_text">Iniciar sesion</string>
     <string name="greeting_login">Bienvenido/a de nuevo a su Marketplace preferido. \nComplete las credenciales para inicar sesion..</string>
     <string name="forgot_password">Olvidaste contraseña?</string>
+    <string name="reset_password_text">Restablecer la contraseña</string>
+    <string name="greeting_text_reset_password">Escribe la dirección de correo electrónico asociada \na tu cuenta y crea tu nueva contraseña para \nconfirmar el cambio realizado.</string>
 </resources>
