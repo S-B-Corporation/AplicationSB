@@ -1,202 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main_header_selector">
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-    <TextView
-        android:id="@+id/sloganid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="SB"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
-
-    <TextView
-        android:id="@+id/createaccountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Crea tu cuenta"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sloganid" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="96dp"
-        android:src="@drawable/icon___party"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="356dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Bienvenido al Marketplace #1 de EL Salvador, complete las credenciales para crear una nueva cuenta."
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountTextView" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Nombre"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        android:background="@drawable/main_header_selector">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_name"
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:contentDescription="@string/logo_content_description"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.038"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/createAccountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/create_account_text"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="@+id/logoImageView"
+            app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_gap"
+            android:contentDescription="@string/party_content_description"
+            android:src="@drawable/party_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/logoImageView"
+            app:layout_constraintStart_toEndOf="@+id/logoImageView"
+            app:layout_constraintTop_toTopOf="@+id/logoImageView" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/greeting_create_account_text"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/createAccountTextView"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountTextView" />
+
+        <EditText
+            android:id="@+id/NameTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/personicon"
+            android:layout_marginStart="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/medium_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/user_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/name_hint"
+            android:inputType="textPersonName"
+            android:minHeight="56dp"
+            android:padding="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@id/textView2" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Corro electronico"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldName"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_email"
+        <EditText
+            android:id="@+id/outlinedTextFieldEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/emailicon"
+            android:layout_marginStart="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/medium_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:minHeight="56dp"
+            android:padding="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/NameTextField"
+            app:layout_constraintTop_toBottomOf="@id/NameTextField" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Contraseña"
-
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEmail"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_password"
+        <EditText
+            android:id="@+id/outlinedTextFieldPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/passwordicon"
+            android:layout_marginStart="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/medium_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:minHeight="56dp"
+            android:padding="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/outlinedTextFieldEmail"
+            app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldEmail" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="370dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="sans-serif"
-        android:text="Haz click en el boton Registrarme, usted aceptara los terminos y condiciones."
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword" />
-
-    <Button
-        android:id="@+id/buttonregister"
-        android:layout_width="271dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:backgroundTint="#FF018786"
-        android:text="Registrarme"
-        android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/optiontextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="-o inicia sesion con-"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonregister" />
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/medium_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/confirm_password_hint"
+            android:inputType="textPassword"
+            android:minHeight="56dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/outlinedTextFieldPassword"
+            app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldPassword" />
 
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="370dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/terms_and_conditions_text"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmPasswordEditText" />
 
-    <TextView
-        android:id="@+id/yatienescuenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="Ya tienes cuenta?"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optiontextview" />
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="271dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:fontFamily="@font/roboto_regular"
+            android:backgroundTint="#FF018786"
+            android:text="@string/register_me_text"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/optionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/login_or_text"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/haveAccountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:text="@string/have_account_text"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/optionTextView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

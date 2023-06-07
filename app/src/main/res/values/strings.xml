@@ -8,4 +8,18 @@
     <string name="for_you_text">Para ti</string>
     <string name="categories_text">Categorías</string>
     <string name="search_hint">Buscar</string>
+    <string name="create_account_text">Crea tu cuenta</string>
+    <string name="greeting_create_account_text">Bienvenido/a al Marketplace #1 de EL Salvador. \nComplete las credenciales para crear su cuenta.</string>
+    <string name="name_hint">Nombre</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="party_content_description">confeti icono</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="terms_and_conditions_text">Haz click en el boton Registrarme, usted aceptara los terminos y condiciones.</string>
+    <string name="register_me_text">Registrarme</string>
+    <string name="login_or_text">-o inicia sesion con-</string>
+    <string name="have_account_text">Ya tienes cuenta?</string>
+    <string name="login_text">Iniciar sesion</string>
+    <string name="greeting_login">Bienvenido/a de nuevo a su Marketplace preferido. \nComplete las credenciales para inicar sesion..</string>
+    <string name="forgot_password">Olvidaste contraseña?</string>
 </resources>
