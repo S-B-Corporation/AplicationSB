@@ -24,4 +24,5 @@
     <string name="forgot_password">Olvidaste contraseña?</string>
     <string name="reset_password_text">Restablecer la contraseña</string>
     <string name="greeting_text_reset_password">Escribe la dirección de correo electrónico asociada \na tu cuenta y crea tu nueva contraseña para \nconfirmar el cambio realizado.</string>
+    <string name="arrow_back_content_description">hacia atras</string>
 </resources>
