@@ -9,13 +9,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory.EdgeDirection
 import com.google.android.material.textfield.TextInputLayout
 
 class createAccount : Fragment() {
 
     private lateinit var nameTextInputLayout: EditText
-    private lateinit var emailTextInputLayout: TextInputLayout
-    private lateinit var passwordTextInputLayout: TextInputLayout
+    private lateinit var emailTextInputLayout: EditText
+    private lateinit var passwordTextInputLayout: EditText
     private lateinit var btnRegister: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
