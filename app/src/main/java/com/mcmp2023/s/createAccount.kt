@@ -22,15 +22,14 @@ class createAccount : Fragment() {
     ): View? {
         binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         return binding.root
-
-        binding.registerButton.setOnClickListener{
-            validate()
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.registerButton.setOnClickListener{
+            validate()
+        }
 
         binding.haveAccountTextView.setOnClickListener{
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
@@ -39,12 +38,12 @@ class createAccount : Fragment() {
 
     private fun validate() {
 
-        val name = binding.NameTextField.text.toString().trim()
+        val name = binding.nameTextField.text.toString().trim()
         val email = binding.outlinedTextFieldEmail.text.toString().trim()
         val password = binding.outlinedTextFieldPassword.text.toString().trim()
 
         if (name.isBlank() ) {
-            binding.NameTextField.error = "Este campo es obligatorio"
+            binding.nameTextField.error = "Este campo es obligatorio"
         }
         if(email.isBlank()){
             binding.outlinedTextFieldEmail.error = "Este campo es obligatorio"

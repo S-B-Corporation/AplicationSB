@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 
@@ -38,7 +37,7 @@ class restorePasword : Fragment() {
         codigoTextInputLayout = view.findViewById(R.id.TextFieldCodeVerify)
         newPassTextInputLayout = view.findViewById(R.id.TextFieldNewPass)
         restorePassTextInputLayout = view.findViewById(R.id.TextFieldConfirmPass)
-        buttonRestorePass = view.findViewById(R.id.arrowbackwards)
+        buttonRestorePass = view.findViewById(R.id.action_login_btn)
 
         buttonRestorePass.setOnClickListener {
             validateData()
@@ -49,7 +48,7 @@ class restorePasword : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<ImageView>(R.id.arrowbackwards).setOnClickListener {
+        view.findViewById<ImageView>(R.id.action_login_btn).setOnClickListener {
             findNavController().navigate(R.id.action_restorePasword_to_fragmentLogin)
         }
     }
