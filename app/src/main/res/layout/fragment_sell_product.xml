@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_header_selector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+        <EditText
+            android:layout_width="379dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Detalla la clave del producto"
+            android:inputType="text"
+            android:outlineProvider="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="43dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoria"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <EditText
+            android:layout_width="379dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Selecciona categoria"
+            android:inputType="text"
+            android:outlineProvider="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripcion"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="199dp" />
+
+        <EditText
+            android:layout_width="379dp"
+            android:layout_height="76dp"
+            android:ems="10"
+            android:hint="Descripcion del producto con mas detalle"
+            android:inputType="text"
+            android:outlineProvider="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="226dp" />
+
+        <TextView
+            android:layout_width="45dp"
+            android:layout_height="16dp"
+            android:text="Estado"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <EditText
+            android:layout_width="379dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Seleccionar estado"
+            android:inputType="text"
+            android:outlineProvider="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="342dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+        <EditText
+            android:layout_width="379dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Ingresa el precio del producto"
+            android:inputType="text"
+            android:outlineProvider="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="434dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            tools:layout_editor_absoluteX="76dp"
+            tools:layout_editor_absoluteY="498dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anadir imagen principal" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            tools:layout_editor_absoluteX="209dp"
+            tools:layout_editor_absoluteY="498dp">
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="222dp"
+            android:layout_height="52dp"
+            android:backgroundTint="#FF018786"
+            android:text="Publicar"
+            tools:layout_editor_absoluteX="95dp"
+            tools:layout_editor_absoluteY="639dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</layout>
