@@ -50,7 +50,7 @@
             android:layout_marginTop="@dimen/small_gap"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/greeting_login"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iniciarsesionTextView" />

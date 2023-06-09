@@ -6,7 +6,7 @@
     app:startDestination="@id/createAccount">
     <fragment
         android:id="@+id/createAccount"
-        android:name="com.mcmp2023.s.createAccount"
+        android:name="com.mcmp2023.s.ui.account.register.createAccount"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.mcmp2023.s.fragmentLogin"
+        android:name="com.mcmp2023.s.ui.account.login.fragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -25,10 +25,13 @@
             app:destination="@id/restorePasword"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
-        android:name="com.mcmp2023.s.restorePasword"
+        android:name="com.mcmp2023.s.ui.account.restore.restorePasword"
         android:label="fragment_restore_pasword"
         tools:layout="@layout/fragment_restore_pasword" >
         <action
@@ -37,4 +40,9 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/forYouFragment"
+        android:name="com.mcmp2023.s.ui.for_you.ForYouFragment"
+        android:label="fragment_for_you"
+        tools:layout="@layout/fragment_for_you" />
 </navigation>
