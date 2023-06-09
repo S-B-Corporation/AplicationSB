@@ -11,64 +11,47 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory.EdgeDirection
 import com.google.android.material.textfield.TextInputLayout
+import com.mcmp2023.s.databinding.FragmentCreateAccountBinding
 
 class createAccount : Fragment() {
-
-    private lateinit var nameTextInputLayout: EditText
-    private lateinit var emailTextInputLayout: EditText
-    private lateinit var passwordTextInputLayout: EditText
-    private lateinit var btnRegister: Button
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
+    private lateinit var binding: FragmentCreateAccountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_create_account, container, false)
-
-        nameTextInputLayout = view.findViewById(R.id.NameTextField)
-        emailTextInputLayout = view.findViewById(R.id.outlinedTextFieldEmail)
-        passwordTextInputLayout = view.findViewById(R.id.outlinedTextFieldPassword)
-        btnRegister = view.findViewById(R.id.registerButton)
-
-        btnRegister.setOnClickListener {
-            validate()
-        }
-        return view
-
+        binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.haveAccountTextView).setOnClickListener {
+
+        binding.registerButton.setOnClickListener{
+            validate()
+        }
+
+        binding.haveAccountTextView.setOnClickListener{
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
         }
     }
 
     private fun validate() {
-        TODO("CHANGE THE WAY WE VALIDATE DE DATA")
 
-    /*    val name = nameTextInputLayout.editText?.text.toString().trim()
-        val email = emailTextInputLayout.editText?.text.toString().trim()
-        val password = passwordTextInputLayout.editText?.text.toString().trim()
+        val name = binding.nameTextField.text.toString().trim()
+        val email = binding.outlinedTextFieldEmail.text.toString().trim()
+        val password = binding.outlinedTextFieldPassword.text.toString().trim()
 
         if (name.isBlank() ) {
-            nameTextInputLayout.error = "Este campo es obligatorio"
+            binding.nameTextField.error = "Este campo es obligatorio"
         }
         if(email.isBlank()){
-            emailTextInputLayout.error = "Este campo es obligatorio"
+            binding.outlinedTextFieldEmail.error = "Este campo es obligatorio"
         }
         if(password.isBlank()){
-            passwordTextInputLayout.error = "Este campo es obligatorio"
+            binding.outlinedTextFieldPassword.error = "Este campo es obligatorio"
         }
-        */
+
 
     }
 

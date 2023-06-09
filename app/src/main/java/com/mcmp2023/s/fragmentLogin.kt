@@ -5,64 +5,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputLayout
+import com.mcmp2023.s.databinding.FragmentLoginBinding
 
 
 class fragmentLogin : Fragment() {
-
-    private lateinit var emailTextInputLayout: TextInputLayout
-    private lateinit var passwordTextInputLayout: TextInputLayout
-    private lateinit var buttonLogin: Button
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
 
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-
-        emailTextInputLayout = view.findViewById(R.id.TextFieldLoginEmail)
-        passwordTextInputLayout = view.findViewById(R.id.TextFieldLoginPassword)
-        buttonLogin = view.findViewById(R.id.arrowbackwards)
-
-        buttonLogin.setOnClickListener {
-            validateLogin()
-        }
-
-
-
-
-        return view    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.actionLoginBtn.setOnClickListener{
+            validateLogin()
+        }
 
-        view.findViewById<TextView>(R.id.textView3).setOnClickListener {
+        binding.forgottPasswordTextView.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentLogin_to_restorePasword)
         }
     }
 
     private fun validateLogin() {
-        val email = emailTextInputLayout.editText?.text.toString().trim()
-        val password = passwordTextInputLayout.editText?.text.toString().trim()
+        val email = binding.TextFieldLoginEmail.text.toString().trim()
+        val password = binding.TextFieldLoginPassword.text.toString().trim()
 
         if (email.isBlank()) {
-            emailTextInputLayout.error = "Este campo es necesario"
+            binding.TextFieldLoginEmail.error = "Este campo es necesario"
         }
         if (password.isBlank()) {
-            passwordTextInputLayout.error = "Este campop es neceario"
+            binding.TextFieldLoginPassword.error = "Este campop es neceario"
         }
     }
 
