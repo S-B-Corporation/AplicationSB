@@ -39,7 +39,6 @@ class fragmentLogin : Fragment() {
         val email = binding.TextFieldLoginEmail.text.toString().trim()
         val password = binding.TextFieldLoginPassword.text.toString().trim()
 
-
         if (email.isBlank()) {
             binding.TextFieldLoginEmail.error = "Este campo es necesario"
         }
