@@ -28,4 +28,8 @@
     <string name="image_product_content_description">Imagen del producto</string>
     <string name="whatsapp_text">Whatsapp</string>
     <string name="code_hint">Codigo de verificacion</string>
+
+    <!-- Array Spinners Options -->
+
+
 </resources>
