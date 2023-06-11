@@ -28,6 +28,7 @@ class fragmentLogin : Fragment() {
 
         binding.actionLoginBtn.setOnClickListener{
             validateLogin()
+            findNavController().navigate(R.id.action_fragmentLogin_to_forYouFragment)
         }
 
         binding.forgottPasswordTextView.setOnClickListener{
