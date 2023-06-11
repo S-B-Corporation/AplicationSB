@@ -44,5 +44,13 @@
         android:id="@+id/forYouFragment"
         android:name="com.mcmp2023.s.ui.for_you.ForYouFragment"
         android:label="fragment_for_you"
-        tools:layout="@layout/fragment_for_you" />
+        tools:layout="@layout/fragment_for_you" >
+        <action
+            android:id="@+id/action_forYouFragment_to_sellProductFragment"
+            app:destination="@id/sellProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellProductFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.sellproduct.SellProductFragment"
+        android:label="SellProductFragment" />
 </navigation>

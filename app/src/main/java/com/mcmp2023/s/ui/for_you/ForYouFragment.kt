@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForYouBinding
 
 class ForYouFragment : Fragment() {
@@ -22,6 +24,11 @@ class ForYouFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Go to SellProductFragment
+        binding.sellTextView.setOnClickListener{
+            findNavController().navigate(R.id.action_forYouFragment_to_sellProductFragment)
+        }
     }
 
 
