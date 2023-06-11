@@ -1,9 +1,10 @@
-package com.mcmp2023.s
+package com.mcmp2023.s.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.mcmp2023.s.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

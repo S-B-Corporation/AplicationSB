@@ -15,7 +15,7 @@
     <string name="party_content_description">confeti icono</string>
     <string name="password_hint">Contraseña</string>
     <string name="confirm_password_hint">Confirmar contraseña</string>
-    <string name="terms_and_conditions_text">Haz click en el boton Registrarme, usted aceptara los terminos y condiciones.</string>
+    <string name="terms_and_conditions_text">Haz click en el boton Registrarme, usted \naceptara los terminos y condiciones.</string>
     <string name="register_me_text">Registrarme</string>
     <string name="login_or_text">-o inicia sesion con-</string>
     <string name="have_account_text">Ya tienes cuenta?</string>

@@ -1,4 +1,4 @@
-package com.mcmp2023.s
+package com.mcmp2023.s.ui.account.restore
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

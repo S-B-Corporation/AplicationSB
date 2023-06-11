@@ -1,12 +1,12 @@
-package com.mcmp2023.s
+package com.mcmp2023.s.ui.account.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentLoginBinding
 
 
@@ -28,6 +28,7 @@ class fragmentLogin : Fragment() {
 
         binding.actionLoginBtn.setOnClickListener{
             validateLogin()
+            findNavController().navigate(R.id.action_fragmentLogin_to_forYouFragment)
         }
 
         binding.forgottPasswordTextView.setOnClickListener{

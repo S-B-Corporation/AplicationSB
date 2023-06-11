@@ -1,16 +1,12 @@
-package com.mcmp2023.s
+package com.mcmp2023.s.ui.account.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView.EdgeEffectFactory.EdgeDirection
-import com.google.android.material.textfield.TextInputLayout
+import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentCreateAccountBinding
 
 class createAccount : Fragment() {
