@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="275dp"
             android:layout_gravity="bottom|center"
+            android:backgroundTint="@color/primary"
             android:background="@drawable/rounded_top_corners_layout_style"
             android:orientation="vertical"
             android:paddingTop="4dp">

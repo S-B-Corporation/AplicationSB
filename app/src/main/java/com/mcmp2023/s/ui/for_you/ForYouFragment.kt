@@ -25,11 +25,18 @@ class ForYouFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+<<<<<<< HEAD
         //Go to SellProductFragment
         binding.sellTextView.setOnClickListener{
             findNavController().navigate(R.id.action_forYouFragment_to_sellProductFragment)
+=======
+        binding.userImageView.setOnClickListener {
+            findNavController().navigate(R.id.action_forYouFragment_to_profileFragment)
+>>>>>>> feature/Application-SB-13
         }
     }
+
+
 
 
 }

@@ -48,9 +48,30 @@
         <action
             android:id="@+id/action_forYouFragment_to_sellProductFragment"
             app:destination="@id/sellProductFragment" />
+
     </fragment>
+    <!-- Mantienes los cambios de la primera rama -->
     <fragment
         android:id="@+id/sellProductFragment"
         android:name="com.mcmp2023.s.ui.for_you.product.sellproduct.SellProductFragment"
-        android:label="SellProductFragment" />
+        android:label="SellProductFragment">
+    </fragment>
+
+    <!-- Mantienes los cambios de la segunda rama -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mcmp2023.s.ui.account.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <!-- Mantienes los cambios de la segunda rama -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mcmp2023.s.ui.account.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
