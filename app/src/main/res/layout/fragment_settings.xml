@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.account.profile.ProfileFragment">
+    tools:context=".ui.account.settings.SettingsFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/default_gap"
@@ -23,99 +23,89 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profile_icon"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="@dimen/default_gap"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-                tools:src="@tools:sample/avatars" />
-
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_gap"
+                android:layout_marginStart="@dimen/medium_gap"
                 android:fontFamily="@font/roboto_bold"
+                android:text="@string/settings_text"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/profile_icon"
-                app:layout_constraintStart_toStartOf="@+id/profile_icon"
-                app:layout_constraintTop_toBottomOf="@+id/profile_icon"
-                tools:text="David Perlera" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/medium_gap"
                 android:background="@drawable/rounded_top_corners_layout_style"
                 android:backgroundTint="@color/white"
-                android:orientation="vertical"
+                android:paddingStart="2dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="2dp"
-                    android:padding="@dimen/medium_gap"
+                    android:orientation="vertical"
                     android:background="@drawable/rounded_top_corners_layout_style"
                     android:backgroundTint="@color/primary"
-                    android:elevation="4dp"
-                    android:orientation="vertical">
+                    android:padding="@dimen/default_gap">
 
                     <Button
-                        android:id="@+id/products_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small_gap"
                         android:layout_marginBottom="@dimen/small_gap"
-                        android:drawableEnd="@drawable/right_arrow"
+                        android:drawableLeft="@drawable/user_icon"
+                        android:foreground="@drawable/white_button_border"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/change_password_text"
                         android:textAlignment="textStart"
-                        android:text="@string/products_text"
                         android:textAllCaps="false"
-                        android:textSize="14sp"
                         android:textColor="@color/white"
-                        android:foreground="@drawable/white_button_border"/>
+                        android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/saves_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small_gap"
                         android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableLeft="@drawable/world_icon"
                         android:foreground="@drawable/white_button_border"
-                        android:drawableEnd="@drawable/right_arrow"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/language_text"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
-                        android:text="@string/saves_text"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/settings_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small_gap"
                         android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableLeft="@drawable/sign_out_icon"
                         android:foreground="@drawable/white_button_border"
-                        android:drawableEnd="@drawable/right_arrow"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/log_out_text"
                         android:textAlignment="textStart"
-                        android:text="@string/settings_text"
                         android:textAllCaps="false"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

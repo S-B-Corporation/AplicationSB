@@ -31,4 +31,7 @@
     <string name="products_text">Productos</string>
     <string name="settings_text">Configuraciones</string>
     <string name="saves_text">Guardado</string>
+    <string name="change_password_text">Cambiar contraseña</string>
+    <string name="language_text">Idioma</string>
+    <string name="log_out_text">Cerrar sesión</string>
 </resources>
