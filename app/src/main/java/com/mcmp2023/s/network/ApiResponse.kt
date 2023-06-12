@@ -4,9 +4,12 @@ import java.lang.Exception
 
 sealed class ApiResponse<T>{
 
+    //Succes Response
     data class Succes<T>(val data: T) : ApiResponse<T>()
 
+    //Error
     data class Error<T>(val exception: Exception) : ApiResponse<T>()
 
+    //Error with a message description
     data class ErrorWithMessage<T>(val message: String) : ApiResponse<T>()
 }
