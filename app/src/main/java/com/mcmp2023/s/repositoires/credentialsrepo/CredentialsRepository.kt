@@ -7,7 +7,6 @@ import com.mcmp2023.s.network.dto.register.RegisterRequest
 import com.mcmp2023.s.network.dto.register.RegisterResponse
 import com.mcmp2023.s.network.service.AuthService
 import retrofit2.HttpException
-import retrofit2.http.HTTP
 import java.io.IOException
 
 class CredentialsRepository(private val api: AuthService) {
@@ -41,7 +40,7 @@ class CredentialsRepository(private val api: AuthService) {
             }
             return ApiResponse.Error(e)
         }catch(e: IOException){
-            //CASE different error
+            //Case different error
             return ApiResponse.Error(e)
         }
     }

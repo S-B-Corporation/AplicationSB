@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "url"
 
-class RetrofitInstance {
+object RetrofitInstance {
     private var TOKEN = ""
 
     fun setToken(token: String){
