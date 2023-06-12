@@ -1,8 +1,14 @@
 package com.mcmp2023.s.ui.account.login.viewmodel
 
+import android.text.Spannable.Factory
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.network.ApiResponse
 import com.mcmp2023.s.repositoires.credentialsrepo.CredentialsRepository
 import com.mcmp2023.s.ui.account.login.LoginUiStatus
@@ -29,6 +35,36 @@ class LoginViewModel (private val repository: CredentialsRepository) : ViewModel
     }
 
     fun onLogin() {
-        if(!validat)
+        if(!validateData()){
+            _status.value = LoginUiStatus.ErrorWithMessage("Wrong information")
+            return
+        }
+        login(email.value!!, password.value!!)
+    }
+
+    private fun validateData(): Boolean {
+        when{
+            email.value.isNullOrEmpty() -> return false
+            password.value.isNullOrEmpty() -> return false
+        }
+        return true
+    }
+
+    fun clearData(){
+        email.value = ""
+        password.value = ""
+    }
+
+    fun clearStatus(){
+        _status.value = LoginUiStatus.Resume
+    }
+
+    companion object{
+        val Factory = viewModelFactory {
+            initializer {
+                val app = this[APPLICATION_KEY] as ProductApplication
+                LoginViewModel(app.credentialsRepository)
+            }
+        }
     }
 }
