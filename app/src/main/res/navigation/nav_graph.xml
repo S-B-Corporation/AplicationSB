@@ -44,5 +44,14 @@
         android:id="@+id/forYouFragment"
         android:name="com.mcmp2023.s.ui.for_you.ForYouFragment"
         android:label="fragment_for_you"
-        tools:layout="@layout/fragment_for_you" />
+        tools:layout="@layout/fragment_for_you" >
+        <action
+            android:id="@+id/action_forYouFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mcmp2023.s.ui.account.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

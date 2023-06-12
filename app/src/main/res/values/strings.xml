@@ -28,4 +28,7 @@
     <string name="image_product_content_description">Imagen del producto</string>
     <string name="whatsapp_text">Whatsapp</string>
     <string name="code_hint">Codigo de verificacion</string>
+    <string name="products_text">Productos</string>
+    <string name="settings_text">Configuraciones</string>
+    <string name="saves_text">Guardado</string>
 </resources>
