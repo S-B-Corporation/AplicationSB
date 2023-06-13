@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_fragmentLogin_to_forYouFragment"
             app:destination="@id/forYouFragment" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_createAccount"
+            app:destination="@id/createAccount" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
