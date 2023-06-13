@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_fragmentLogin_to_createAccount"
             app:destination="@id/createAccount" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
@@ -80,4 +83,8 @@
         android:name="com.mcmp2023.s.ui.account.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.mcmp2023.s.ui.account.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" />
 </navigation>

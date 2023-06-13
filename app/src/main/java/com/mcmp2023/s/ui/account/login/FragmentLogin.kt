@@ -72,7 +72,7 @@ class fragmentLogin : Fragment() {
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
                 app.saveAuthToken(status.token)
-                findNavController().navigate(R.id.action_fragmentLogin_to_forYouFragment)
+                findNavController().navigate(R.id.action_fragmentLogin_to_welcomeFragment)
             }
             else -> {}
         }
