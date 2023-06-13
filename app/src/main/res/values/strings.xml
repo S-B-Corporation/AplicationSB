@@ -34,4 +34,16 @@
     <string name="change_password_text">Cambiar contraseña</string>
     <string name="language_text">Idioma</string>
     <string name="log_out_text">Cerrar sesión</string>
+    <string name="title_text">Titulo</string>
+    <string name="title_hint">Detalla el titulo del producto</string>
+    <string name="description_text">Descripcion</string>
+    <string name="category_text">Categoria</string>
+    <string name="description_hint">Descripcion del producto con mas detalle</string>
+    <string name="State_text">Estado</string>
+    <string name="state_hint">Seleccionar estado</string>
+    <string name="price_text">Precio</string>
+    <string name="price_hint">Ingresa el precio del producto</string>
+    <string name="add_image_text">Anadir imagen principal</string>
+    <string name="post_text">Publicar</string>
+    <string name="add_more_text">añadir más</string>
 </resources>
