@@ -29,6 +29,7 @@ class ForYouFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         navigation()
 
     }
@@ -37,6 +38,7 @@ class ForYouFragment : Fragment() {
 
         val navHost = childFragmentManager.findFragmentById(R.id.for_you_nav_host) as NavHostFragment
         val navController = navHost.navController
+
 
         //Go to SellProductFragment
         binding.sellTextView.setOnClickListener {
