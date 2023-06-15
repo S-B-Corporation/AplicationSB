@@ -15,12 +15,14 @@ import com.mcmp2023.s.databinding.FragmentCreateAccountBinding
 import com.mcmp2023.s.ui.account.register.viewmodel.RegisterViewModel
 
 class createAccount : Fragment() {
-    private lateinit var binding: FragmentCreateAccountBinding
+    private lateinit var binding: FragmentCreateAccountBinding // Declaration of the data binding variable
 
+    // Dependency injection to obtain a shared instance of the ViewModel
     private val registerViewModel: RegisterViewModel by activityViewModels {
         RegisterViewModel.Factory
     }
 
+    //Getting the current application
     val app by lazy {
         requireActivity().application as ProductApplication
     }
@@ -29,6 +31,7 @@ class createAccount : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflating the view using databinding
         binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,43 +39,51 @@ class createAccount : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setViewmodel()
-        setObserver()
+        setViewmodel() //setting the viewmodel on the databinding
+        setObserver() // Observing change in the login status
 
-        binding.registerButton.setOnClickListener{
+        //setting click listener to login fragment
+        binding.registerButton.setOnClickListener {
             validate()
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
         }
 
-        binding.haveAccountTextView.setOnClickListener{
+        //case have account click listerner to login fragment
+        binding.haveAccountTextView.setOnClickListener {
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
         }
     }
 
+    //function to set viewmodel on the databinding
     private fun setViewmodel() {
         binding.viewmodel = registerViewModel
     }
 
-    private fun setObserver(){
-        registerViewModel.status.observe(viewLifecycleOwner) {status ->
+    //function to observe changer on the register status
+    private fun setObserver() {
+        registerViewModel.status.observe(viewLifecycleOwner) { status ->
             handleUiStatus(status)
         }
     }
 
     private fun handleUiStatus(status: RegisterUiStatus) {
-        when(status){
+        when (status) {
+            //case error show An error has ocurred
             is RegisterUiStatus.Error -> {
                 Toast.makeText(requireContext(), "An error has ocurred", Toast.LENGTH_SHORT).show()
             }
+            //case errorWithMessage show status messsage
             is RegisterUiStatus.ErrorWithMessage -> {
                 Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
             }
+            //case success clear status and data then go to login fragment
             is RegisterUiStatus.Success -> {
                 registerViewModel.clearStatus()
                 registerViewModel.clearData()
                 findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
                 Log.d("APP REGISTERRR", "Succeeeeeeeeeeeeeeeees")
             }
+
             else -> {}
         }
     }
@@ -83,13 +94,13 @@ class createAccount : Fragment() {
         val email = binding.outlinedTextFieldEmail.text.toString().trim()
         val password = binding.outlinedTextFieldPassword.text.toString().trim()
 
-        if (name.isBlank() ) {
+        if (name.isBlank()) {
             binding.nameTextField.error = "Este campo es obligatorio"
         }
-        if(email.isBlank()){
+        if (email.isBlank()) {
             binding.outlinedTextFieldEmail.error = "Este campo es obligatorio"
         }
-        if(password.isBlank()){
+        if (password.isBlank()) {
             binding.outlinedTextFieldPassword.error = "Este campo es obligatorio"
         }
     }
