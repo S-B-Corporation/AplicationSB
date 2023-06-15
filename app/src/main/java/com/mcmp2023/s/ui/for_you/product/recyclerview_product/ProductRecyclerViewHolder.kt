@@ -9,9 +9,5 @@ class ProductRecyclerViewHolder(private val binding: ProductItemBinding) : Recyc
     fun bind(product: ProductModel) {
         binding.cardProductName.text = product.tittle
         product.price.toString().also { binding.cardProductPrice.text = it }
-        Log.d("Product", product.tittle)
-        Log.d("Product", product.price.toString())
-        Log.d("Product", binding.cardProductName.text.toString())
-        Log.d("Product", binding.cardProductPrice.text.toString())
     }
 }

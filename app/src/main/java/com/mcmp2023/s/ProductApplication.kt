@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.mcmp2023.s.data.products
 import com.mcmp2023.s.network.retrofit.RetrofitInstance
+import com.mcmp2023.s.data.categories
+import com.mcmp2023.s.repositoires.CategoryRepository
 import com.mcmp2023.s.repositoires.ProductRepository
 import com.mcmp2023.s.repositoires.credentialsrepo.CredentialsRepository
 
@@ -36,7 +38,11 @@ class ProductApplication :  Application() {
         editor.apply()
     }
 
-    companion object{
+    companion object {
         const val USER_TOKEN = "user_token"
+    }
+
+    val categoryRepository : CategoryRepository by lazy {
+        CategoryRepository(categories)
     }
 }
