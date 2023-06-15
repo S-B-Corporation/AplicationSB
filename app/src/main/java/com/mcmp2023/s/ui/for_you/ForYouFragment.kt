@@ -1,14 +1,13 @@
 package com.mcmp2023.s.ui.for_you
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForYouBinding
 
@@ -17,6 +16,10 @@ class ForYouFragment : Fragment() {
     //binding Instance
     private lateinit var binding: FragmentForYouBinding
 
+    //Gettin application
+    val app by lazy {
+        requireActivity().application as ProductApplication
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +31,7 @@ class ForYouFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         navigation()
-
     }
 
     private fun navigation() {
@@ -71,6 +71,11 @@ class ForYouFragment : Fragment() {
 
         }
 
+    }
+
+    //Getting token saved
+    private fun getToken(){
+        val tokenValue = app.getToken()
     }
 
 }

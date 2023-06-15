@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mcmp2023.s.ui.account.register.viewmodel.RegisterViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,6 +80,7 @@
             android:padding="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:text="@={viewmodel.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@id/textView2" />
@@ -93,6 +100,7 @@
             android:inputType="textEmailAddress"
             android:minHeight="56dp"
             android:padding="10dp"
+            android:text="@={viewmodel.email}"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +124,7 @@
             android:inputType="textPassword"
             android:minHeight="56dp"
             android:padding="10dp"
+            android:text="@={viewmodel.password}"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +177,7 @@
             android:backgroundTint="#FF018786"
             android:text="@string/register_me_text"
             android:textAllCaps="true"
+            android:onClick="@{() -> viewmodel.onRegister()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forgott_password_text_view" />
