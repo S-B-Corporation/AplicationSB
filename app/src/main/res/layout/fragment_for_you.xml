@@ -76,10 +76,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/medium_gap"
+                android:padding="4dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/for_you_text"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:background="@drawable/textview_hover"
                 app:layout_constraintBottom_toBottomOf="@+id/view"
                 app:layout_constraintStart_toEndOf="@+id/view"
                 app:layout_constraintTop_toTopOf="@+id/view" />
@@ -89,10 +91,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/medium_gap"
+                android:padding="4dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/categories_text"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:background="@drawable/textview_hover"
                 app:layout_constraintBottom_toBottomOf="@+id/for_you_text_view"
                 app:layout_constraintStart_toEndOf="@+id/for_you_text_view"
                 app:layout_constraintTop_toTopOf="@+id/for_you_text_view" />
@@ -116,12 +120,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/sell_text_view" />
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/for_you_nav_host_container"
+                android:id="@+id/for_you_nav_host"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/default_gap"
-                android:layout_marginTop="@dimen/small_gap"
+                android:layout_marginTop="@dimen/default_gap"
                 android:layout_marginEnd="@dimen/default_gap"
                 android:layout_marginBottom="@dimen/default_gap"
                 app:defaultNavHost="true"

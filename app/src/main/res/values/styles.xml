@@ -10,4 +10,10 @@
         <item name="cornerSizeTopRight">11dp</item>
         <item name="cornerSizeTopLeft">11dp</item>
     </style>
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardBackgroundColor">#00000000</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:foreground">@drawable/search_view_bg</item>
+    </style>
 </resources>
