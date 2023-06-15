@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForYouBinding
 
@@ -14,7 +15,10 @@ class ForYouFragment : Fragment() {
     //binding Instance
     private lateinit var binding: FragmentForYouBinding
 
-    //
+    //Gettin application
+    val app by lazy {
+        requireActivity().application as ProductApplication
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +42,11 @@ class ForYouFragment : Fragment() {
         }
 
 
+    }
+
+    //Getting token saved
+    private fun getToken(){
+        val tokenValue = app.getToken()
     }
 
 }
