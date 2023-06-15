@@ -4,7 +4,7 @@ import com.mcmp2023.s.network.service.AuthService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = ""
+const val BASE_URL = "https://retrofit.up.railway.app/"
 
 object RetrofitInstance {
     private var TOKEN = ""

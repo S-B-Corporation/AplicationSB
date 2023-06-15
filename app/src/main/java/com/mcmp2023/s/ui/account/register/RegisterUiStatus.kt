@@ -9,5 +9,5 @@ sealed class RegisterUiStatus {
 
     data class ErrorWithMessage(val message: String) : RegisterUiStatus()
 
-    data class Success(val token: String) : RegisterUiStatus()
+    object Success : RegisterUiStatus()
 }

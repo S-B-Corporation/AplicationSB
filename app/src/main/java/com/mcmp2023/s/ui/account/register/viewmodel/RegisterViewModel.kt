@@ -40,6 +40,8 @@ class RegisterViewModel(private val repository: CredentialsRepository) : ViewMod
             _status.value = RegisterUiStatus.ErrorWithMessage("Complete fields")
             return
         }
+
+        register(name.value!!, email.value!!, password.value!!  )
     }
 
     private fun validateData(): Boolean {
