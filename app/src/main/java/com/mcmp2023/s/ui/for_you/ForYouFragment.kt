@@ -14,6 +14,8 @@ class ForYouFragment : Fragment() {
     //binding Instance
     private lateinit var binding: FragmentForYouBinding
 
+    //
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

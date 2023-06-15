@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mcmp2023.s.ProductApplication
-import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentWelcomeBinding
 
 

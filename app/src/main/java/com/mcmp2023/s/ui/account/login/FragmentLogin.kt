@@ -15,13 +15,14 @@ import com.mcmp2023.s.ui.account.login.viewmodel.LoginViewModel
 
 
 class fragmentLogin : Fragment() {
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding // Declaration of the data binding variable
 
-    //viewmodel instance
+    // Dependency injection to obtain a shared instance of the ViewModel
     private val loginViewModel: LoginViewModel by activityViewModels {
         LoginViewModel.Factory
     }
 
+    //Getting the current application
     val app by lazy {
         requireActivity().application as ProductApplication
     }
@@ -30,6 +31,7 @@ class fragmentLogin : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflating the view using databinding
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,46 +40,55 @@ class fragmentLogin : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setViewModel()
-        observeStatus()
+        setViewModel() //setting the viewmodel on the databinding
+        observeStatus() // Observing change in the login status
 
+        //setting click listener for the register button
         binding.actionRegisterTextView.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentLogin_to_createAccount)
         }
 
+        //setting click listener for the restore text view
         binding.forgottPasswordTextView.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentLogin_to_restorePasword)
         }
     }
 
+
+    //function to set the viewmodel on the databinding
     private fun setViewModel(){
         binding.viewmodel = loginViewModel
     }
 
+    //function to observe changes in the login status
     private fun observeStatus(){
         loginViewModel.status.observe(viewLifecycleOwner) { status ->
-            handleUiStatus(status)
+            handleUiStatus(status) //handling the login status and updating the UI
         }
     }
 
-    private fun handleUiStatus(status: LoginUiStatus){
+    private fun handleUiStatus(status: LoginUiStatus){ //different login status
         when(status){
+            //case error show An error has ocurred
             is LoginUiStatus.Error -> {
                 Toast.makeText(requireContext(), "An error has ocurred",Toast.LENGTH_SHORT).show()
             }
+            //case errorWithMessage show status messsage
             is LoginUiStatus.ErrorWithMessage -> {
                 Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
             }
+            //case success clear status and data the save token and pass to foryoufragment
             is LoginUiStatus.Success -> {
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
                 app.saveAuthToken(status.token)
-                findNavController().navigate(R.id.action_fragmentLogin_to_welcomeFragment)
+                findNavController().navigate(R.id.forYouFragment)
             }
             else -> {}
         }
     }
 
+    //validate there are no empty fields
     private fun validateLogin() {
         val email = binding.TextFieldLoginEmail.text.toString().trim()
         val password = binding.TextFieldLoginPassword.text.toString().trim()
