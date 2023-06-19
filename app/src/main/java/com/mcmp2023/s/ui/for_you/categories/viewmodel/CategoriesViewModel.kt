@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.mcmp2023.s.ProductApplication
-import com.mcmp2023.s.repositoires.CategoryRepository
+import com.mcmp2023.s.repositories.CategoryRepository
 
 class CategoriesViewModel(private val repository: CategoryRepository) : ViewModel() {
 

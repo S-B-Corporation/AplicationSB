@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.mcmp2023.s.ProductApplication
-import com.mcmp2023.s.repositoires.ProductRepository
+import com.mcmp2023.s.repositories.ProductRepository
 
 class ProductRecyclerViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
-    fun getProducts() = productRepository.getProducts()
+    val products = productRepository.getAll()
+
+    suspend fun getProducts() = productRepository.getProducts()
 
     companion object {
         val Factory = viewModelFactory {
