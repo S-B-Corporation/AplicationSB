@@ -1,4 +1,7 @@
 package com.mcmp2023.s.network.dto.restorePassword
 
-class RestorePasswordResponse {
-}
+import com.google.gson.annotations.SerializedName
+
+data class RestorePasswordResponse(
+    @SerializedName("message") val message: String
+)

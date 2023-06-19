@@ -1,4 +1,5 @@
 package com.mcmp2023.s.network.dto.forgotPassword
 
-class ForgotPasswordRequest {
-}
+data class ForgotPasswordRequest(
+    val email: String
+)
