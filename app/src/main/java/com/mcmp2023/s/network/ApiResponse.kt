@@ -5,7 +5,7 @@ import java.lang.Exception
 sealed class ApiResponse<T>{
 
     //Succes Response
-    data class Succes<T>(val data: T) : ApiResponse<T>()
+    data class Success<T>(val data: T) : ApiResponse<T>()
 
     //Error
     data class Error<T>(val exception: Exception) : ApiResponse<T>()

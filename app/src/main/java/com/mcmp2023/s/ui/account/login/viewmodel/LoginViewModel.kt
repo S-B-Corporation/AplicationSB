@@ -26,7 +26,7 @@ class LoginViewModel (private val repository: CredentialsRepository) : ViewModel
                 when(val response = repository.login(email, password)){
                     is ApiResponse.Error -> LoginUiStatus.Error(response.exception)
                     is ApiResponse.ErrorWithMessage -> LoginUiStatus.ErrorWithMessage(response.message)
-                    is ApiResponse.Succes -> LoginUiStatus.Success(response.data)
+                    is ApiResponse.Success -> LoginUiStatus.Success(response.data)
                 }
             )
         }

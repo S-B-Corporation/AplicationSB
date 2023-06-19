@@ -29,7 +29,7 @@ class RegisterViewModel(private val repository: CredentialsRepository) : ViewMod
                 when (val response = repository.register(name, email, password)) {
                     is ApiResponse.Error -> RegisterUiStatus.Error(response.exception)
                     is ApiResponse.ErrorWithMessage -> RegisterUiStatus.ErrorWithMessage(response.message)
-                    is ApiResponse.Succes -> RegisterUiStatus.Success
+                    is ApiResponse.Success -> RegisterUiStatus.Success
                 }
             )
         }
