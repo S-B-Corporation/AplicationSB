@@ -8,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mcmp2023.s.R
+import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.FragmentProductRecyclerViewBinding
+import com.mcmp2023.s.ui.for_you.product.descriptionproduct.viewmodel.DescriptionViewModel
 import com.mcmp2023.s.ui.for_you.product.recyclerview_product.viewmodel.ProductRecyclerViewModel
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 class ProductRecyclerViewFragment : Fragment() {
 
@@ -21,9 +25,10 @@ class ProductRecyclerViewFragment : Fragment() {
 
     private lateinit var adapter: ProductRecyclerViewAdapter
 
-    private val viewModel : ProductRecyclerViewModel by activityViewModels {
+    private val productRecyclerViewModel : ProductRecyclerViewModel by activityViewModels {
         ProductRecyclerViewModel.Factory
     }
+    private val descriptionViewModel : DescriptionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +42,7 @@ class ProductRecyclerViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
-            viewModel.getProducts()
+            productRecyclerViewModel.getProducts()
         }
         setRecyclerView(view)
     }
@@ -46,7 +51,9 @@ class ProductRecyclerViewFragment : Fragment() {
     private fun setRecyclerView(view: View) {
         binding.productsRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
 
-        adapter = ProductRecyclerViewAdapter()
+        adapter = ProductRecyclerViewAdapter {
+            showSelectedPlants(it)
+        }
 
         binding.productsRecyclerView.adapter = adapter
         displayProducts()
@@ -56,11 +63,20 @@ class ProductRecyclerViewFragment : Fragment() {
 
    private fun displayProducts() {
 
-       viewModel.products.observe(viewLifecycleOwner) {
+       productRecyclerViewModel.products.observe(viewLifecycleOwner) {
            adapter.setData(it)
            adapter.notifyDataSetChanged()
-           Log.d("debug", it.toString())
        }
 
-    }
+   }
+
+   private fun showSelectedPlants(product: Product) {
+
+       val navHost = activity?.findNavController(R.id.nav_host_fragment)
+
+       descriptionViewModel.setSelectedProduct(product)
+       navHost?.navigate(R.id.action_forYouFragment_to_productDescriptionFragment)
+   }
+
+
 }

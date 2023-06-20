@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.ProductItemBinding
 
-class ProductRecyclerViewAdapter() : RecyclerView.Adapter<ProductRecyclerViewHolder>() {
+class ProductRecyclerViewAdapter(private val clickListener : (Product) -> Unit) : RecyclerView.Adapter<ProductRecyclerViewHolder>() {
 
     private val products = ArrayList<Product>()
 
@@ -21,7 +21,7 @@ class ProductRecyclerViewAdapter() : RecyclerView.Adapter<ProductRecyclerViewHol
 
     override fun onBindViewHolder(holder: ProductRecyclerViewHolder, position: Int) {
         val product = products[position]
-        holder.bind(product)
+        holder.bind(product, clickListener)
     }
 
     fun setData(productsList : List<Product>) {

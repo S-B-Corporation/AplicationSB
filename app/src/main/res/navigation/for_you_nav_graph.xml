@@ -11,17 +11,9 @@
         android:label="fragment_product_recycler_view"
         tools:layout="@layout/fragment_product_recycler_view" >
         <action
-            android:id="@+id/action_productRecyclerViewFragment_to_productDescriptionFragment"
-            app:destination="@id/productDescriptionFragment" />
-        <action
             android:id="@+id/action_productRecyclerViewFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/productDescriptionFragment"
-        android:name="com.mcmp2023.s.ui.for_you.product.descriptionproduct.ProductDescriptionFragment"
-        android:label="fragment_product_description"
-        tools:layout="@layout/fragment_product_description" />
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.mcmp2023.s.ui.for_you.categories.CategoriesFragment"

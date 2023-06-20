@@ -5,8 +5,12 @@ import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.ProductItemBinding
 
 class ProductRecyclerViewHolder(private val binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(product: Product) {
+    fun bind(product: Product, clickListener: (Product) -> Unit) {
         binding.cardProductName.text = product.tittle
         product.price.toString().also { binding.cardProductPrice.text = it }
+
+        binding.productCard.setOnClickListener {
+            clickListener(product)
+        }
     }
 }
