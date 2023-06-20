@@ -5,6 +5,7 @@ import com.mcmp2023.s.network.service.ProductService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//const val BASE_URL = "http://134.209.219.237:3000"
 const val BASE_URL = "https://apisb.onrender.com"
 
 object RetrofitInstance {

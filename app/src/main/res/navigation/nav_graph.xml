@@ -85,7 +85,11 @@
         android:id="@+id/settingsFragment"
         android:name="com.mcmp2023.s.ui.account.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.mcmp2023.s.ui.account.welcome.WelcomeFragment"
