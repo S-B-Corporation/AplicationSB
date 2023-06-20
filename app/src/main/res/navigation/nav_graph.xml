@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_forYouFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_forYouFragment_to_productDescriptionFragment"
+            app:destination="@id/productDescriptionFragment" />
 
     </fragment>
     <!-- Mantienes los cambios de la primera rama -->
@@ -82,9 +85,18 @@
         android:id="@+id/settingsFragment"
         android:name="com.mcmp2023.s.ui.account.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.mcmp2023.s.ui.account.welcome.WelcomeFragment"
         android:label="WelcomeFragment" />
+    <fragment
+        android:id="@+id/productDescriptionFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.descriptionproduct.ProductDescriptionFragment"
+        android:label="fragment_product_description"
+        tools:layout="@layout/fragment_product_description" />
 </navigation>

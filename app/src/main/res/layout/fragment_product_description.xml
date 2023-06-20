@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.for_you.product.descriptionproduct.ProductDescriptionFragment">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mcmp2023.s.ui.for_you.product.descriptionproduct.viewmodel.DescriptionViewModel" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +35,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="275dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:backgroundTint="@color/primary"
             android:background="@drawable/rounded_top_corners_layout_style"
@@ -57,6 +63,7 @@
                         android:fontFamily="@font/roboto_bold"
                         android:textColor="@color/white"
                         android:textSize="20sp"
+                        android:text="@={viewmodel.title}"
                         tools:text="Reloj Rolex" />
 
                     <TextView
@@ -93,7 +100,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="3dp"
                 android:padding="16dp"
-                android:text="Reloj icónico por excelencia, el Oyster Perpetual Cosmograph Daytona se ha consolidado mucho más allá de los circuitos automovilísticos por su estética emblemática y su desempeño superlativo.
+                android:text="@={viewmodel.description}"
+                tools:text="Reloj icónico por excelencia, el Oyster Perpetual Cosmograph Daytona se ha consolidado mucho más allá de los circuitos automovilísticos por su estética emblemática y su desempeño superlativo.
 Con ocasión de los 60 años del modelo."
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -127,6 +135,7 @@ Con ocasión de los 60 años del modelo."
                         android:fontFamily="@font/roboto_bold"
                         android:textColor="@color/white"
                         android:textSize="18sp"
+                        android:text='@={viewmodel.price}'
                         tools:text="$129.99" />
 
                 </LinearLayout>
