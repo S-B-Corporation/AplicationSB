@@ -1,15 +1,23 @@
 package com.mcmp2023.s.ui.for_you.product.recyclerview_product
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mcmp2023.s.R
+import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.FragmentProductRecyclerViewBinding
+import com.mcmp2023.s.ui.for_you.product.descriptionproduct.viewmodel.DescriptionViewModel
 import com.mcmp2023.s.ui.for_you.product.recyclerview_product.viewmodel.ProductRecyclerViewModel
+import kotlinx.coroutines.launch
 
 class ProductRecyclerViewFragment : Fragment() {
 
@@ -17,9 +25,10 @@ class ProductRecyclerViewFragment : Fragment() {
 
     private lateinit var adapter: ProductRecyclerViewAdapter
 
-    private val viewModel : ProductRecyclerViewModel by activityViewModels {
+    private val productRecyclerViewModel : ProductRecyclerViewModel by activityViewModels {
         ProductRecyclerViewModel.Factory
     }
+    private val descriptionViewModel : DescriptionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +41,9 @@ class ProductRecyclerViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        lifecycleScope.launch {
+            productRecyclerViewModel.getProducts()
+        }
         setRecyclerView(view)
     }
 
@@ -39,15 +51,32 @@ class ProductRecyclerViewFragment : Fragment() {
     private fun setRecyclerView(view: View) {
         binding.productsRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
 
-        adapter = ProductRecyclerViewAdapter()
+        adapter = ProductRecyclerViewAdapter {
+            showSelectedPlants(it)
+        }
 
         binding.productsRecyclerView.adapter = adapter
         displayProducts()
 
+
     }
 
-    private fun displayProducts() {
-        adapter.setData(viewModel.getProducts())
-        adapter.notifyDataSetChanged()
-    }
+   private fun displayProducts() {
+
+       productRecyclerViewModel.products.observe(viewLifecycleOwner) {
+           adapter.setData(it)
+           adapter.notifyDataSetChanged()
+       }
+
+   }
+
+   private fun showSelectedPlants(product: Product) {
+
+       val navHost = activity?.findNavController(R.id.nav_host_fragment)
+
+       descriptionViewModel.setSelectedProduct(product)
+       navHost?.navigate(R.id.action_forYouFragment_to_productDescriptionFragment)
+   }
+
+
 }

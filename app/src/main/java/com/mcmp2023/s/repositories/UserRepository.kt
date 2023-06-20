@@ -1,7 +1,6 @@
-package com.mcmp2023.s.repositoires
+package com.mcmp2023.s.repositories
 
-import com.mcmp2023.s.data.models.UserModel
-import com.mcmp2023.s.data.userID
+import com.mcmp2023.s.data.db.models.UserModel
 
 class UserRepository(private val users: MutableList<UserModel>) {
     fun getUsers() = users

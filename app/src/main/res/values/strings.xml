@@ -46,4 +46,5 @@
     <string name="add_image_text">Anadir imagen principal</string>
     <string name="post_text">Publicar</string>
     <string name="add_more_text">añadir más</string>
+    <string name="not_have_account_text">No tienes una cuenta?</string>
 </resources>

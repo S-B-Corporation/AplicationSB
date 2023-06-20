@@ -1,6 +1,7 @@
 package com.mcmp2023.s.ui.account.register
 
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,7 +32,7 @@ class createAccount : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //inflating the view using databinding
+        //inflating the view using data binding
         binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,8 +40,9 @@ class createAccount : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setViewmodel() //setting the viewmodel on the databinding
+        setViewModel() //setting the view model on the data binding
         setObserver() // Observing change in the login status
+        showPassword() // showing or hiding password
 
         //setting click listener to login fragment
         binding.registerButton.setOnClickListener {
@@ -48,14 +50,14 @@ class createAccount : Fragment() {
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
         }
 
-        //case have account click listerner to login fragment
+        //case have account click listener to login fragment
         binding.haveAccountTextView.setOnClickListener {
             findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
         }
     }
 
-    //function to set viewmodel on the databinding
-    private fun setViewmodel() {
+    //function to set view model on the data binding
+    private fun setViewModel() {
         binding.viewmodel = registerViewModel
     }
 
@@ -68,11 +70,11 @@ class createAccount : Fragment() {
 
     private fun handleUiStatus(status: RegisterUiStatus) {
         when (status) {
-            //case error show An error has ocurred
+            //case error show An error has occurred
             is RegisterUiStatus.Error -> {
-                Toast.makeText(requireContext(), "An error has ocurred", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "An error has occurred", Toast.LENGTH_SHORT).show()
             }
-            //case errorWithMessage show status messsage
+            //case errorWithMessage show status message
             is RegisterUiStatus.ErrorWithMessage -> {
                 Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
             }
@@ -81,7 +83,7 @@ class createAccount : Fragment() {
                 registerViewModel.clearStatus()
                 registerViewModel.clearData()
                 findNavController().navigate(R.id.action_createAccount_to_fragmentLogin)
-                Log.d("APP REGISTERRR", "Succeeeeeeeeeeeeeeeees")
+                Log.d("APP REGISTER", "Succeeeeeeeeeeeeeeeees")
             }
 
             else -> {}
@@ -102,6 +104,32 @@ class createAccount : Fragment() {
         }
         if (password.isBlank()) {
             binding.outlinedTextFieldPassword.error = "Este campo es obligatorio"
+        }
+    }
+
+    private fun showPassword() {
+        binding.passwordHideImageView.setOnClickListener {
+            if (binding.outlinedTextFieldPassword.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                // hiding password
+                binding.outlinedTextFieldPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.passwordHideImageView.setImageResource(R.drawable.eye_closed_icon)
+            } else  {
+                // showing password
+                binding.outlinedTextFieldPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.passwordHideImageView.setImageResource(R.drawable.eye_icon)
+            }
+        }
+
+        binding.confirmPasswordHideImageView.setOnClickListener {
+            if (binding.confirmPasswordEditText.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                // hiding password
+                binding.confirmPasswordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.confirmPasswordHideImageView.setImageResource(R.drawable.eye_closed_icon)
+            } else  {
+                // showing password
+                binding.confirmPasswordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.confirmPasswordHideImageView.setImageResource(R.drawable.eye_icon)
+            }
         }
     }
 

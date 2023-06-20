@@ -1,4 +1,4 @@
-package com.mcmp2023.s.repositoires.credentialsrepo
+package com.mcmp2023.s.repositories.credentialsrepo
 
 import com.mcmp2023.s.network.ApiResponse
 import com.mcmp2023.s.network.dto.login.LoginRequest
