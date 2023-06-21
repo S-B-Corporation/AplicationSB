@@ -1,4 +1,4 @@
-package com.mcmp2023.s.ui.account.restore
+package com.mcmp2023.s.ui.account.restorePassword
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

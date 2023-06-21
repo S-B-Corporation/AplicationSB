@@ -1,4 +1,4 @@
-package com.mcmp2023.s.ui.account.profile
+package com.mcmp2023.s.ui.account.welcome.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

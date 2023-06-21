@@ -26,9 +26,7 @@ class RestorePasswordRepository(private val api: RestorePasswordService) {
     }
 
     suspend fun restorePassword(
-        email: String,
-        code: String,
-        newPassword: String
+        email: String, code: String, newPassword: String
     ): ApiResponse<String> {
         try {
             val response: RestorePasswordResponse =
