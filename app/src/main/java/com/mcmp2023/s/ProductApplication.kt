@@ -7,6 +7,8 @@ import com.mcmp2023.s.network.retrofit.RetrofitInstance
 import com.mcmp2023.s.data.categories
 import com.mcmp2023.s.data.db.ProductsDataBase
 import com.mcmp2023.s.network.retrofit.RetrofitInstance.getProductService
+import com.mcmp2023.s.network.retrofit.RetrofitInstance.getRestorePasswordService
+import com.mcmp2023.s.repositoires.credentialsrepo.RestorePasswordRepository
 import com.mcmp2023.s.repositories.CategoryRepository
 import com.mcmp2023.s.repositories.ProductRepository
 import com.mcmp2023.s.repositories.credentialsrepo.CredentialsRepository
@@ -33,13 +35,20 @@ class ProductApplication :  Application() {
     private fun getApiService() = with(RetrofitInstance){
         setToken(getToken())
         getLoginService()
-
     }
 
     fun getToken(): String = prefs.getString(USER_TOKEN, "")!!
 
     val credentialsRepository: CredentialsRepository by lazy {
         CredentialsRepository(getApiService())
+    }
+
+    val restorePasswordRepository: RestorePasswordRepository by lazy {
+        RestorePasswordRepository(restorePasswordService)
+    }
+
+    private val restorePasswordService by lazy {
+        getRestorePasswordService()
     }
 
     fun saveAuthToken(token: String) {
