@@ -1,7 +1,7 @@
-package com.mcmp2023.s.repositoires
+package com.mcmp2023.s.repositories
 
 import com.mcmp2023.s.data.categories
-import com.mcmp2023.s.data.models.Category
+import com.mcmp2023.s.data.db.models.Category
 
 class CategoryRepository(private val category: MutableList<Category>) {
 

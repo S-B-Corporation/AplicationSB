@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.network.ApiResponse
-import com.mcmp2023.s.repositoires.credentialsrepo.CredentialsRepository
+import com.mcmp2023.s.repositories.credentialsrepo.CredentialsRepository
 import com.mcmp2023.s.ui.account.login.LoginUiStatus
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.mcmp2023.s.data.models
+package com.mcmp2023.s.data.db.models
 
 data class UserModel (
     val ID: Int,

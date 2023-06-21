@@ -1,6 +1,5 @@
 package com.mcmp2023.s.ui.account.register.viewmodel
 
-import android.text.Spannable.Factory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.network.ApiResponse
-import com.mcmp2023.s.repositoires.credentialsrepo.CredentialsRepository
+import com.mcmp2023.s.repositories.credentialsrepo.CredentialsRepository
 import com.mcmp2023.s.ui.account.register.RegisterUiStatus
 import kotlinx.coroutines.launch
 
