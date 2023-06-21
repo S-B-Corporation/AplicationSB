@@ -1,18 +1,28 @@
 package com.mcmp2023.s.ui.account.restorePassword
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentRestorePaswordBinding
+import com.mcmp2023.s.ui.account.forgotPassword.ForgotPasswordUiStatus
+import com.mcmp2023.s.ui.account.forgotPassword.viewmodel.ForgotPasswordViewmodel
+import com.mcmp2023.s.ui.account.restorePassword.viewmodel.RestorePasswordViewmodel
 
 
 class restorePasword : Fragment() {
 
     private lateinit var binding: FragmentRestorePaswordBinding
 
+    private val restorePasswordViewmodel: RestorePasswordViewmodel by activityViewModels {
+        RestorePasswordViewmodel.Factory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,15 +34,41 @@ class restorePasword : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        /*
-        binding.actionRestorePasswordBtn.setOnClickListener{
-            validateData()
-        }
-         */
-
-        binding.actionRestorePasswordBtn.setOnClickListener{
+        setViewmodel()
+        observeStatus()
+        binding.actionBacktologin.setOnClickListener{
             findNavController().popBackStack()
+        }
+    }
+
+    private fun setViewmodel(){
+        binding.viewmodel = restorePasswordViewmodel
+    }
+
+    private fun observeStatus(){
+        restorePasswordViewmodel.status.observe(viewLifecycleOwner) {status ->
+            handleUiStatus(status)
+        }
+    }
+
+    private fun handleUiStatus(status: RestorePasswordUiStatus) { //different login status
+        when (status) {
+            //case error show An error has occurred
+            is RestorePasswordUiStatus.Error -> {
+                Toast.makeText(requireContext(), "An error has occurred", Toast.LENGTH_SHORT).show()
+            }
+            //case errorWithMessage show status message
+            is RestorePasswordUiStatus.ErrorWithMessage -> {
+                Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
+            }
+            //case success clear status and data the save token and pass to foryoufragment
+            is RestorePasswordUiStatus.Success -> {
+                restorePasswordViewmodel.clearStatus()
+                restorePasswordViewmodel.clearData()
+                Toast.makeText(requireContext(), "Se ha actualizado su contrasena exitosamente", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_restorePasword_to_fragmentLogin)
+            }
+            else -> {}
         }
     }
 
@@ -55,5 +91,20 @@ class restorePasword : Fragment() {
             binding.TextFieldConfirmPass.error = "Este campo es obligatorio"
         }
     }
+
+    /*
+        private fun showPassword() {
+        binding..setOnClickListener {
+            if (binding.TextFieldLoginPassword.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                // hiding password
+                binding.TextFieldLoginPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.showPasswordImageView.setImageResource(R.drawable.eye_closed_icon)
+            } else {
+                // showing password
+                binding.TextFieldLoginPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.showPasswordImageView.setImageResource(R.drawable.eye_icon)
+            }
+        }
+    */
 
 }

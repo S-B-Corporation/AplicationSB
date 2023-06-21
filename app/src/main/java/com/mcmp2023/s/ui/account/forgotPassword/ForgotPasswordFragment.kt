@@ -60,6 +60,7 @@ class ForgotPasswordFragment : Fragment() {
             is ForgotPasswordUiStatus.Success -> {
                 forgotPasswordViewmodel.clearStatus()
                 forgotPasswordViewmodel.clearData()
+                Toast.makeText(requireContext(), "Se ha enviado un codigo a su correo electronico", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_forgotPasswordFragment_to_restorePasword)
             }
 

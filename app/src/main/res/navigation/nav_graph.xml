@@ -39,7 +39,11 @@
         android:id="@+id/restorePasword"
         android:name="com.mcmp2023.s.ui.account.restorePassword.restorePasword"
         android:label="fragment_restore_pasword"
-        tools:layout="@layout/fragment_restore_pasword" />
+        tools:layout="@layout/fragment_restore_pasword" >
+        <action
+            android:id="@+id/action_restorePasword_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
     <fragment
         android:id="@+id/forYouFragment"
         android:name="com.mcmp2023.s.ui.for_you.ForYouFragment"
