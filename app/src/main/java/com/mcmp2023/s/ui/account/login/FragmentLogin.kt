@@ -52,7 +52,7 @@ class fragmentLogin : Fragment() {
 
         //setting click listener for the restore text view
         binding.forgotPasswordTextView.setOnClickListener{
-            findNavController().navigate(R.id.action_fragmentLogin_to_restorePasword)
+            findNavController().navigate(R.id.action_fragmentLogin_to_forgotPasswordFragment)
         }
 
 
