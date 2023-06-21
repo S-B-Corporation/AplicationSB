@@ -5,18 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForYouBinding
+import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
 
 class ForYouFragment : Fragment() {
 
     //binding Instance
     private lateinit var binding: FragmentForYouBinding
 
-    //Gettin application
+    private val categoriesViewModel: CategoriesViewModel by activityViewModels()
+
+    //Getting application
     val app by lazy {
         requireActivity().application as ProductApplication
     }
@@ -32,6 +36,8 @@ class ForYouFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigation()
+
+
     }
 
     private fun navigation() {
@@ -50,6 +56,8 @@ class ForYouFragment : Fragment() {
 
             val currentDestination =  navController.currentDestination
             val currentDestinationId = currentDestination?.id
+
+            categoriesViewModel.clearData()
 
             if (currentDestinationId != R.id.productRecyclerViewFragment) {
                 navController.navigate(R.id.action_categoriesFragment_to_productRecyclerViewFragment)
@@ -73,9 +81,5 @@ class ForYouFragment : Fragment() {
 
     }
 
-    //Getting token saved
-    private fun getToken(){
-        val tokenValue = app.getToken()
-    }
 
 }

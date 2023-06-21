@@ -126,7 +126,7 @@ Con ocasión de los 60 años del modelo."
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:textColor="@color/white"
-                        tools:text="Precio" />
+                        android:text="@string/price_text" />
 
                     <TextView
                         android:layout_marginStart="@dimen/small_gap"

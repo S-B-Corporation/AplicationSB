@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mcmp2023.s.R
+import com.mcmp2023.s.data.db.models.Category
 import com.mcmp2023.s.databinding.FragmentCategoriesBinding
 import com.mcmp2023.s.ui.for_you.categories.recyclerview.CategoryRecyclerViewAdapter
 import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
@@ -38,7 +42,9 @@ class CategoriesFragment : Fragment() {
     private fun setAdapter(view: View) {
         binding.categoryRecyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        adapter = CategoryRecyclerViewAdapter()
+        adapter = CategoryRecyclerViewAdapter{
+            showSelectedCategory(it)
+        }
 
         binding.categoryRecyclerView.adapter = adapter
         displayCategories()
@@ -49,4 +55,11 @@ class CategoriesFragment : Fragment() {
         adapter.setData(viewModel.getCategories())
         adapter.notifyDataSetChanged()
     }
+
+    private fun showSelectedCategory(category: Category) {
+        viewModel.setSelectedCategory(category)
+        findNavController().navigate(R.id.action_categoriesFragment_to_productRecyclerViewFragment)
+    }
+
+
 }

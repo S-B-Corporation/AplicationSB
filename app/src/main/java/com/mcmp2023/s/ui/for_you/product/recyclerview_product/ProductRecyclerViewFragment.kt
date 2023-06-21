@@ -1,5 +1,6 @@
 package com.mcmp2023.s.ui.for_you.product.recyclerview_product
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,9 +13,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.FragmentProductRecyclerViewBinding
+import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
 import com.mcmp2023.s.ui.for_you.product.descriptionproduct.viewmodel.DescriptionViewModel
 import com.mcmp2023.s.ui.for_you.product.recyclerview_product.viewmodel.ProductRecyclerViewModel
 import kotlinx.coroutines.launch
@@ -25,10 +28,20 @@ class ProductRecyclerViewFragment : Fragment() {
 
     private lateinit var adapter: ProductRecyclerViewAdapter
 
+
+    private val app by lazy {
+        requireActivity().application as ProductApplication
+    }
+
     private val productRecyclerViewModel : ProductRecyclerViewModel by activityViewModels {
         ProductRecyclerViewModel.Factory
     }
     private val descriptionViewModel : DescriptionViewModel by activityViewModels()
+
+    private val categoriesViewModel : CategoriesViewModel by activityViewModels {
+        CategoriesViewModel.Factory
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +54,6 @@ class ProductRecyclerViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            productRecyclerViewModel.getProducts()
-        }
         setRecyclerView(view)
     }
 
@@ -61,13 +71,24 @@ class ProductRecyclerViewFragment : Fragment() {
 
     }
 
+   @SuppressLint("NotifyDataSetChanged")
    private fun displayProducts() {
 
-       productRecyclerViewModel.products.observe(viewLifecycleOwner) {
-           adapter.setData(it)
-           adapter.notifyDataSetChanged()
+       if (categoriesViewModel.name.isNotBlank()) {
+           productRecyclerViewModel.getProductsByCategory(app.getToken(), categoriesViewModel.name)
+           productRecyclerViewModel.productsWhitCategory.observe(viewLifecycleOwner) {
+               adapter.setData(it)
+               adapter.notifyDataSetChanged()
+           }
+       } else {
+           lifecycleScope.launch {
+               productRecyclerViewModel.getProducts()
+           }
+           productRecyclerViewModel.products.observe(viewLifecycleOwner) {
+               adapter.setData(it)
+               adapter.notifyDataSetChanged()
+           }
        }
-
    }
 
    private fun showSelectedPlants(product: Product) {
