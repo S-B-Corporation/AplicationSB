@@ -15,7 +15,7 @@ class CredentialsRepository(private val api: AuthService) {
             val response: LoginResponse =
                 api.login(LoginRequest(email, password))
             //returns token and succes message
-            return ApiResponse.Succes(response.token)
+            return ApiResponse.Success(response.token)
         }catch(e: HttpException){
             //if code 400 return error 400 message
             if(e.code() == 400){
@@ -32,7 +32,7 @@ class CredentialsRepository(private val api: AuthService) {
         try{
             val response: RegisterResponse = api.register(RegisterRequest(name, email, password))
             //returns succes message
-            return ApiResponse.Succes(response.message)
+            return ApiResponse.Success(response.message)
         }catch(e: HttpException){
             //if code 400 return error 400 message
             if(e.code() == 400){

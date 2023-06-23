@@ -32,19 +32,17 @@
             android:id="@+id/action_fragmentLogin_to_createAccount"
             app:destination="@id/createAccount" />
         <action
-            android:id="@+id/action_fragmentLogin_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            android:id="@+id/action_fragmentLogin_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
-        android:name="com.mcmp2023.s.ui.account.restore.restorePasword"
+        android:name="com.mcmp2023.s.ui.account.restorePassword.restorePasword"
         android:label="fragment_restore_pasword"
         tools:layout="@layout/fragment_restore_pasword" >
         <action
             android:id="@+id/action_restorePasword_to_fragmentLogin"
-            app:destination="@id/fragmentLogin"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_enter_anim" />
+            app:destination="@id/fragmentLogin" />
     </fragment>
     <fragment
         android:id="@+id/forYouFragment"
@@ -72,7 +70,7 @@
     <!-- Mantienes los cambios de la segunda rama -->
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.mcmp2023.s.ui.account.profile.ProfileFragment"
+        android:name="com.mcmp2023.s.ui.account.welcome.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -91,12 +89,16 @@
             app:destination="@id/fragmentLogin" />
     </fragment>
     <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.mcmp2023.s.ui.account.welcome.WelcomeFragment"
-        android:label="WelcomeFragment" />
-    <fragment
         android:id="@+id/productDescriptionFragment"
         android:name="com.mcmp2023.s.ui.for_you.product.descriptionproduct.ProductDescriptionFragment"
         android:label="fragment_product_description"
         tools:layout="@layout/fragment_product_description" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.mcmp2023.s.ui.account.forgotPassword.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_restorePasword"
+            app:destination="@id/restorePasword" />
+    </fragment>
 </navigation>
