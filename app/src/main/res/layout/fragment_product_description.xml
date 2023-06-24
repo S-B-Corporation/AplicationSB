@@ -16,6 +16,7 @@
         android:paddingBottom="@dimen/medium_gap">
 
         <ImageView
+            android:id="@+id/product_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="top|center"
@@ -126,7 +127,7 @@ Con ocasión de los 60 años del modelo."
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:textColor="@color/white"
-                        tools:text="Precio" />
+                        android:text="@string/price_text" />
 
                     <TextView
                         android:layout_marginStart="@dimen/small_gap"
@@ -135,7 +136,7 @@ Con ocasión de los 60 años del modelo."
                         android:fontFamily="@font/roboto_bold"
                         android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:text='@={viewmodel.price}'
+                        android:text="@{@string/dollar_sign + viewmodel.price}"
                         tools:text="$129.99" />
 
                 </LinearLayout>

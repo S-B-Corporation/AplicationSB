@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mcmp2023.s.data.db.models.Category
 import com.mcmp2023.s.databinding.CategoryItemBinding
 
-class CategoryRecyclerViewAdapter() : RecyclerView.Adapter<CategoryRecyclerViewHolder>() {
+class CategoryRecyclerViewAdapter(private val clickListener : (Category) -> Unit) : RecyclerView.Adapter<CategoryRecyclerViewHolder>() {
 
     private val categories = ArrayList<Category>()
 
@@ -19,7 +19,7 @@ class CategoryRecyclerViewAdapter() : RecyclerView.Adapter<CategoryRecyclerViewH
 
     override fun onBindViewHolder(holder: CategoryRecyclerViewHolder, position: Int) {
         val category = categories[position]
-        holder.bind(category)
+        holder.bind(category, clickListener)
     }
 
     fun setData(categoriesList: List<Category>) {

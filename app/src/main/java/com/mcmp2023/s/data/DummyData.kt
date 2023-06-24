@@ -46,6 +46,7 @@ val users = mutableListOf(
     UserModel(usermID, username, userEmail, userPassword, arreglo),
     UserModel(usermID2, username2, userEmail2, userPassword2, arreglo2)
 )
+var id1 = "1"
 
 
 var categoryName1 = "Vehiculos"
@@ -64,10 +65,10 @@ var categoryIcon6 = R.drawable.smartphone_icon
 
 
 val categories = mutableListOf(
-    Category(categoryName1, categoryIcon1),
-    Category(categoryName2, categoryIcon2),
-    Category(categoryName3, categoryIcon3),
-    Category(categoryName4, categoryIcon4),
-    Category(categoryName5, categoryIcon5),
-    Category(categoryName6, categoryIcon6)
+    Category(id1,categoryName1, categoryIcon1),
+    Category(id1,categoryName2, categoryIcon2),
+    Category(id1,categoryName3, categoryIcon3),
+    Category(id1,categoryName4, categoryIcon4),
+    Category(id1, categoryName5, categoryIcon5),
+    Category(id1, categoryName6, categoryIcon6)
 )

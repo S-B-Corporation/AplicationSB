@@ -8,8 +8,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-//const val BASE_URL = "http://134.209.219.237:3000"
-const val BASE_URL = "https://apisb.onrender.com"
+ const val BASE_URL = "https://sybapimarketplace.shop"
+//const val BASE_URL = "https://apisb.onrender.com"
 
 object RetrofitInstance {
     private var TOKEN = ""
@@ -35,4 +35,5 @@ object RetrofitInstance {
     fun getProductService() : ProductService {
         return retrofit.create(ProductService::class.java)
     }
+
 }

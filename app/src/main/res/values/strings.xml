@@ -47,4 +47,6 @@
     <string name="post_text">Publicar</string>
     <string name="add_more_text">añadir más</string>
     <string name="not_have_account_text">No tienes una cuenta?</string>
+    <string name="error_empty_text">Campo vacio</string>
+    <string name="dollar_sign">$</string>
 </resources>

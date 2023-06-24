@@ -11,11 +11,13 @@ class DescriptionViewModel : ViewModel() {
     var description = MutableLiveData("")
     var price = MutableLiveData("")
     var phoneNumber = MutableLiveData("")
+    var imageUrl = ""
 
     fun setSelectedProduct(product: Product) {
         title.value = product.tittle
         description.value = product.description
         price.value = product.price
         phoneNumber.value = product.phoneNumber
+        imageUrl = product.image.toString()
     }
 }
