@@ -16,23 +16,35 @@ import kotlinx.coroutines.launch
 
 class ProductRecyclerViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
-    val products = productRepository.getAll()
+    var productName = ""
+
+   // val products = productRepository.getAll()
+
+    //suspend fun getProducts() = productRepository.getProducts()
 
     private val _products = MutableLiveData<List<Product>>()
-    val productsWhitCategory : LiveData<List<Product>> get() = _products
-    val searchProduct : LiveData<List<Product>> get() = _products
+
+    val products : LiveData<List<Product>> get() = _products
 
     var error = MutableLiveData<Int?>(null)
 
-    suspend fun getProducts() = productRepository.getProducts()
-    fun getProductsByCategory(token: String, categoryName: String) {
+    fun fetchProducts(token: String, categoryName: String, name: String) {
+        if (name.isNotBlank()) {
+            searchProduct(name)
+        } else if (token.isNotBlank() && categoryName.isNotBlank() ) {
+            getProductsByCategory(token, categoryName)
+        } else {
+            getAllProducts()
+        }
+    }
+    private fun getProductsByCategory(token: String, categoryName: String) {
        viewModelScope.launch {
            error.value = null
            try {
                if (categoryName.isNotBlank()) {
                    val response = productRepository.getProductsByCategories("Bearer $token", categoryName)
                    _products.value = response.products
-                   Log.d("ViewModel", productsWhitCategory.toString())
+                   Log.d("ViewModel", products.toString())
                } else   {
                     error.value = R.string.error_empty_text
                }
@@ -42,13 +54,13 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
        }
     }
 
-    fun searchProduct(name: String) {
+    private fun searchProduct(name: String) {
         viewModelScope.launch {
             try {
                 if (name.isNotBlank()) {
                     val response = productRepository.searchProduct(name)
                     _products.value = response
-                    Log.d("ViewModel", productsWhitCategory.toString())
+                    Log.d("ViewModel", products.toString())
                 } else   {
                     error.value = R.string.error_empty_text
                 }
@@ -56,6 +68,21 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
                 Log.e("ViewModel", "Error al buscar", e)
             }
         }
+    }
+
+    private fun getAllProducts() {
+        viewModelScope.launch {
+            try {
+                val response = productRepository.getProducts()
+                _products.value = response
+            } catch (e: Exception) {
+                Log.e("ViewModel", "Error al buscar", e)
+            }
+        }
+    }
+
+    fun clearProductName() {
+        productName = ""
     }
 
 

@@ -1,6 +1,7 @@
 package com.mcmp2023.s.ui.for_you
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForYouBinding
 import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
+import com.mcmp2023.s.ui.for_you.product.recyclerview_product.viewmodel.ProductRecyclerViewModel
 
 class ForYouFragment : Fragment() {
 
@@ -19,6 +21,10 @@ class ForYouFragment : Fragment() {
     private lateinit var binding: FragmentForYouBinding
 
     private val categoriesViewModel: CategoriesViewModel by activityViewModels()
+
+    private val productViewModel: ProductRecyclerViewModel by activityViewModels {
+        ProductRecyclerViewModel.Factory
+    }
 
     //Getting application
     val app by lazy {
@@ -35,7 +41,16 @@ class ForYouFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setViewModel()
         navigation()
+        binding.forYouTextView.setBackgroundResource(R.drawable.textview_hover)
+        binding.categoryTextView.setBackgroundResource(0)
+
+        binding.searchImageView.setOnClickListener {
+            productViewModel.productName = binding.searchEditText.text.toString()
+            productViewModel.fetchProducts(token = "", categoryName = "", name = productViewModel.productName)
+            Log.d("string", productViewModel.productName)
+        }
 
 
     }
@@ -44,7 +59,6 @@ class ForYouFragment : Fragment() {
 
         val navHost = childFragmentManager.findFragmentById(R.id.for_you_nav_host) as NavHostFragment
         val navController = navHost.navController
-
 
         //Go to SellProductFragment
         binding.sellTextView.setOnClickListener {
@@ -58,9 +72,13 @@ class ForYouFragment : Fragment() {
             val currentDestinationId = currentDestination?.id
 
             categoriesViewModel.clearData()
+            productViewModel.productName = ""
+
 
             if (currentDestinationId != R.id.productRecyclerViewFragment) {
                 navController.navigate(R.id.action_categoriesFragment_to_productRecyclerViewFragment)
+                binding.forYouTextView.setBackgroundResource(R.drawable.textview_hover)
+                binding.categoryTextView.setBackgroundResource(0)
             }
         }
 
@@ -71,6 +89,8 @@ class ForYouFragment : Fragment() {
 
             if (currentDestinationId != R.id.categoriesFragment) {
                 navController.navigate(R.id.action_productRecyclerViewFragment_to_categoriesFragment)
+                binding.categoryTextView.setBackgroundResource(R.drawable.textview_hover)
+                binding.forYouTextView.setBackgroundResource(0)
             }
         }
 
@@ -80,6 +100,11 @@ class ForYouFragment : Fragment() {
         }
 
     }
+
+    private fun setViewModel() {
+        binding.productViewModel = productViewModel
+    }
+
 
 
 }

@@ -7,8 +7,8 @@
 
     <style name="cardImageViewRounded">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">11dp</item>
-        <item name="cornerSizeTopLeft">11dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
     </style>
 
     <style name="CardViewStyle" parent="CardView">

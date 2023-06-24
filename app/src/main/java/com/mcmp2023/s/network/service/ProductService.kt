@@ -18,6 +18,6 @@ interface ProductService {
         @Path("categoryName") categoryName: String
     ): ProductsByCategoriesResponse
 
-    @GET("/searchProducts/{productName}")
+    @GET("/searchProducts/byname/{productName}")
     suspend fun searchProduct(@Path("productName") productName: String): List<Product>
 }
