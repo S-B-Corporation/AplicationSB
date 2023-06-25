@@ -18,11 +18,9 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
 
     var productName = ""
 
-   // val products = productRepository.getAll()
-
-    //suspend fun getProducts() = productRepository.getProducts()
-
     private val _products = MutableLiveData<List<Product>>()
+
+    val favoriteProduct : MutableList<Product> = mutableListOf()
 
     val products : LiveData<List<Product>> get() = _products
 
@@ -78,6 +76,14 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
             } catch (e: Exception) {
                 Log.e("ViewModel", "Error al buscar", e)
             }
+        }
+    }
+
+    fun toggleFavorites(product: Product) {
+        if (favoriteProduct.contains(product)) {
+            favoriteProduct.remove(product)
+        } else {
+            favoriteProduct.add(product)
         }
     }
 
