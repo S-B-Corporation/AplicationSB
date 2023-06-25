@@ -63,9 +63,11 @@ class ProductRecyclerViewFragment : Fragment() {
     private fun setRecyclerView(view: View) {
         binding.productsRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
 
-        adapter = ProductRecyclerViewAdapter {
+        adapter = ProductRecyclerViewAdapter ({
             showSelectedPlants(it)
-        }
+        }, {
+            productRecyclerViewModel.toggleFavorites(it)
+        }, productRecyclerViewModel)
 
         binding.productsRecyclerView.adapter = adapter
         displayProducts()

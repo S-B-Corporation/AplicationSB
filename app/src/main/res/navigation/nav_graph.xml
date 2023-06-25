@@ -70,7 +70,7 @@
     <!-- Mantienes los cambios de la segunda rama -->
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.mcmp2023.s.ui.account.welcome.profile.ProfileFragment"
+        android:name="com.mcmp2023.s.ui.account.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action

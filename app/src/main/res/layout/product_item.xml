@@ -71,6 +71,7 @@
                     android:padding="@dimen/small_gap">
 
                     <ImageView
+                        android:id="@+id/favorite_image_view"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:layout_gravity="end"

@@ -85,6 +85,7 @@
                     android:padding="@dimen/small_gap">
 
                     <ImageView
+                        android:id="@+id/description_fav_image_view"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:layout_gravity="end"
@@ -149,6 +150,7 @@ Con ocasión de los 60 años del modelo."
                     android:padding="@dimen/small_gap">
 
                     <Button
+                        android:id="@+id/whatsapp_button"
                         android:layout_marginEnd="@dimen/default_gap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
