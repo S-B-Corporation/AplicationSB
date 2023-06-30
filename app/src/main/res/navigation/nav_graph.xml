@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/createAccount">
+    app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/createAccount"
         android:name="com.mcmp2023.s.ui.account.register.createAccount"
@@ -100,5 +100,13 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_restorePasword"
             app:destination="@id/restorePasword" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.mcmp2023.s.ui.start.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_createAccount"
+            app:destination="@id/createAccount" />
     </fragment>
 </navigation>
