@@ -81,8 +81,8 @@ class SellProductFragment : Fragment() {
                 sellProductViewmodel.clearStatus()
                 sellProductViewmodel.clearData()
                 Toast.makeText(requireContext(), "Se ha publicado exitosamente su producto", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
             }
-
             else -> {}
         }
     }

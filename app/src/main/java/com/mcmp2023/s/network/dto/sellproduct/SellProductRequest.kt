@@ -3,10 +3,10 @@ package com.mcmp2023.s.network.dto.sellproduct
 import okhttp3.MultipartBody
 
 data class SellProductRequest(
-    val title: String,
-    val description: String,
-    val price: Float,
-    val category: String,
-    val phoneNumber: String,
-    val image: MultipartBody.Part
+    val titulo: String,
+    val descripcion: String,
+    val precio: Float,
+    val categoria: String,
+    val numerodecontacto: String,
+    val image: String
 )

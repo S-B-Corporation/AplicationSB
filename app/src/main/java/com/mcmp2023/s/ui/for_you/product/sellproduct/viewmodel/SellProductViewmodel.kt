@@ -36,26 +36,16 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
     val status: MutableLiveData<SellProductUiStatus>
         get() = _status
 
-    private fun validatePrice(): Float{
+    private fun validatePrice(): Float {
         if (!price.value.isNullOrEmpty()) {
             val pricef = price.value!!.toFloat()
             return pricef
         } else {
-            return  0f
+            return 0f
         }
     }
 
-    val productToSell =
-        SellProductRequest(
-            title = title.value ?: "",
-            description = description.value ?: "",
-            price = validatePrice(),
-            category = category.value ?: "",
-            phoneNumber = phoneNumber.value ?: "",
-            image = imagePart
-        )
-
-    private fun sellproduct(token: String, productReq: SellProductRequest ) {
+    private fun sellproduct(token: String, productReq: SellProductRequest) {
         viewModelScope.launch {
             _status.postValue(
                 when (val response = repository.sellProduct("Bearer $token", productReq)) {
@@ -72,6 +62,15 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
             _status.value = SellProductUiStatus.ErrorWithMessage("Wrong Data")
             return
         }
+        val productToSell =
+            SellProductRequest(
+                title.value!!,
+                description.value!!,
+                validatePrice(),
+                category.value!!,
+                phoneNumber.value!!,
+                ""
+            )
         sellproduct(token.value.toString(), productToSell)
     }
 
