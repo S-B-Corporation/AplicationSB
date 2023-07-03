@@ -36,9 +36,7 @@ class CategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
-        }
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.primary)
         setAdapter(view)
     }
 

@@ -44,9 +44,7 @@ class ForYouFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setViewModel()
         navigation()
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
-        }
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.primary)
         binding.forYouTextView.setBackgroundResource(R.drawable.textview_hover)
         binding.categoryTextView.setBackgroundResource(0)
 

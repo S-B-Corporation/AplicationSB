@@ -28,9 +28,7 @@ class SellProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), com.mcmp2023.s.R.color.black)
-        }
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), com.mcmp2023.s.R.color.third)
         //find Spinner
         spinner = binding.categorySpinnerView
         val opciones = listOf("Opción 1", "Opción 2", "Opción 3")
