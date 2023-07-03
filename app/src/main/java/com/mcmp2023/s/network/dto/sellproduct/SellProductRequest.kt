@@ -6,7 +6,7 @@ data class SellProductRequest(
     val titulo: String,
     val descripcion: String,
     val precio: Float,
-    val categoria: String,
+    val categoriaNombre: String,
     val numerodecontacto: String,
     val image: String
 )
