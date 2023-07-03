@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,9 @@ class ForYouFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setViewModel()
         navigation()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
+        }
         binding.forYouTextView.setBackgroundResource(R.drawable.textview_hover)
         binding.categoryTextView.setBackgroundResource(0)
 
