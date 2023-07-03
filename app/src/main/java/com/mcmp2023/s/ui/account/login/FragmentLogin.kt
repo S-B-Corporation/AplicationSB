@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
@@ -45,6 +46,9 @@ class fragmentLogin : Fragment() {
         observeStatus() // Observing change in the login status
         showPassword() // showing or hiding password
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.otheractivitys)
+        }
         //setting click listener for the register button
         binding.actionRegisterTextView.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentLogin_to_createAccount)

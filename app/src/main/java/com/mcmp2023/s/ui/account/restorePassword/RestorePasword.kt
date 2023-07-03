@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.R
@@ -36,6 +37,9 @@ class restorePasword : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setViewmodel()
         observeStatus()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.otheractivitys)
+        }
         binding.actionBacktologin.setOnClickListener{
             findNavController().popBackStack()
         }
