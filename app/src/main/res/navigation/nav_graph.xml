@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_fragmentLogin_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
@@ -108,5 +111,24 @@
         <action
             android:id="@+id/action_startFragment_to_createAccount"
             app:destination="@id/createAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminUserFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminusers.AdminUserFragment"
+        android:label="AdminUserFragment" >
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminProfilesFragment"
+            app:destination="@id/adminProfilesFragment" />
+        <action
+            android:id="@+id/action_adminUserFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminProfilesFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminprofiles.AdminProfilesFragment"
+        android:label="AdminProfilesFragment" >
+        <action
+            android:id="@+id/action_adminProfilesFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
     </fragment>
 </navigation>

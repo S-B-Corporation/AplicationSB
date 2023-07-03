@@ -14,6 +14,7 @@ class CredentialsRepository(private val api: AuthService) {
         try{
             val response: LoginResponse =
                 api.login(LoginRequest(email, password))
+
             //returns token and succes message
             return ApiResponse.Success(response.token)
         }catch(e: HttpException){
