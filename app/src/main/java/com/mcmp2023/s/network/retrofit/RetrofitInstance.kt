@@ -3,6 +3,7 @@ package com.mcmp2023.s.network.retrofit
 import com.mcmp2023.s.network.service.AuthService
 import com.mcmp2023.s.network.service.ProductService
 import com.mcmp2023.s.network.service.RestorePasswordService
+import com.mcmp2023.s.network.service.UserService
 import com.mcmp2023.s.repositoires.credentialsrepo.RestorePasswordRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,10 +14,14 @@ import retrofit2.create
 
 object RetrofitInstance {
     private var TOKEN = ""
+    //private var ROLE = ""
 
     fun setToken(token: String){
         this.TOKEN = token
+        //this.ROLE = role
     }
+
+
 
     //retrofit instance
     private val retrofit = Retrofit.Builder()
@@ -34,6 +39,10 @@ object RetrofitInstance {
 
     fun getProductService() : ProductService {
         return retrofit.create(ProductService::class.java)
+    }
+
+    fun getUserService() : UserService {
+        return retrofit.create(UserService::class.java)
     }
 
 }

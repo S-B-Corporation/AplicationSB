@@ -2,6 +2,7 @@ package com.mcmp2023.s.ui.account.login
 
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -89,8 +90,16 @@ class fragmentLogin : Fragment() {
             is LoginUiStatus.Success -> {
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
-                app.saveAuthToken(status.token)
-                findNavController().navigate(R.id.forYouFragment)
+                val user= "user"
+
+                if (user == "user") {
+                    app.saveAuthToken(status.token)
+                    findNavController().navigate(R.id.forYouFragment)
+                }
+                else{
+                    app.saveAuthToken(status.token)
+                    findNavController().navigate(R.id.action_fragmentLogin_to_adminUserFragment)
+                }
             }
             else -> {}
         }
@@ -105,7 +114,7 @@ class fragmentLogin : Fragment() {
             binding.TextFieldLoginEmail.error = "Este campo es necesario"
         }
         if (password.isBlank()) {
-            binding.TextFieldLoginPassword.error = "Este campop es neceario"
+            binding.TextFieldLoginPassword.error = "Este campo es neceario"
         }
     }
 
@@ -123,5 +132,6 @@ class fragmentLogin : Fragment() {
             }
         }
     }
+
 
 }
