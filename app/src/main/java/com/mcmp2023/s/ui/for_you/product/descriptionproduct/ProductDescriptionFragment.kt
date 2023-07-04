@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentProductDescriptionBinding
@@ -40,7 +41,7 @@ class ProductDescriptionFragment : Fragment() {
         }
         setViewModel()
         renderImage(viewModel.imageUrl, view )
-        redirectWhatsApp(viewModel.phoneNumber.toString())
+        redirectWhatsApp(viewModel.phoneNumber, viewModel.title)
     }
     private fun setViewModel() {
         binding.viewmodel = viewModel
@@ -57,13 +58,16 @@ class ProductDescriptionFragment : Fragment() {
             .into(binding.productImage)
     }
 
-    private fun redirectWhatsApp(phoneNumber: String) {
+    private fun redirectWhatsApp(phoneNumberLiveData: MutableLiveData<String>, titleLiveData: MutableLiveData<String>) {
         binding.whatsappButton.setOnClickListener {
-            val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            val phoneNumber = phoneNumberLiveData.value
+            val title = titleLiveData.value
+            if (!phoneNumber.isNullOrEmpty()) {
+                val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber&text=Hola,%20sigue%20disponible%20el%20producto%20$title%20de%20SBMarketplace")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
         }
-
     }
    /*
     private fun Favorites() {
