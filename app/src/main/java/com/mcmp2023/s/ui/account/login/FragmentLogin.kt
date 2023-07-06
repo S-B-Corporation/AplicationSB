@@ -88,16 +88,17 @@ class fragmentLogin : Fragment() {
             }
             //case success clear status and data the save token and pass to foryoufragment
             is LoginUiStatus.Success -> {
+                val role = status.response.role
+                app.saveUserRole(role)
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
-                val user= "user"
 
-                if (user == "user") {
-                    app.saveAuthToken(status.token)
+                if (role == "user") {
+                    app.saveAuthToken(status.response.token)
                     findNavController().navigate(R.id.forYouFragment)
                 }
                 else{
-                    app.saveAuthToken(status.token)
+                    app.saveAuthToken(status.response.token)
                     findNavController().navigate(R.id.action_fragmentLogin_to_adminUserFragment)
                 }
             }

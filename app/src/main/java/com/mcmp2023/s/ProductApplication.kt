@@ -69,16 +69,16 @@ class ProductApplication :  Application() {
         editor.apply()
     }
 
-    /*fun saveUserRole(role: String) {
+    fun saveUserRole(role: String) {
         val editor = prefs.edit()
         editor.putString(USER_ROLE, role)
         editor.apply()
-    }*/
+    }
 
 
     companion object {
         const val USER_TOKEN = "user_token"
-        //const val USER_ROLE = "user_role"
+        const val USER_ROLE = "user_role"
     }
 
     val categoryRepository : CategoryRepository by lazy {
