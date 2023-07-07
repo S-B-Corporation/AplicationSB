@@ -16,4 +16,9 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="android:foreground">@drawable/search_view_bg</item>
     </style>
+
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/edit_text_sell_product</item>
+    </style>
 </resources>
+

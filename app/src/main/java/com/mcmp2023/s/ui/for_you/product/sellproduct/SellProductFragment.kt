@@ -1,6 +1,5 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct
 
-import android.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +12,14 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
+import com.mcmp2023.s.R
+import com.mcmp2023.s.data.db.models.Category
 import com.mcmp2023.s.databinding.FragmentSellProductBinding
-import com.mcmp2023.s.ui.account.forgotPassword.ForgotPasswordUiStatus
+import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
 import com.mcmp2023.s.ui.for_you.product.sellproduct.viewmodel.SellProductViewmodel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class SellProductFragment : Fragment() {
@@ -23,6 +27,10 @@ class SellProductFragment : Fragment() {
     private lateinit var spinner: Spinner
 
     private lateinit var binding: FragmentSellProductBinding
+
+    private val categoryViewModel : CategoriesViewModel by activityViewModels {
+        CategoriesViewModel.Factory
+    }
 
     private val sellProductViewmodel: SellProductViewmodel by activityViewModels {
         SellProductViewmodel.Factory
@@ -45,10 +53,12 @@ class SellProductFragment : Fragment() {
         sellProductViewmodel.token.value = app.getToken()
 
         //spinner
-        spinnerFunction(view)
+        CoroutineScope(Dispatchers.Main).launch {
+            getCategoryAndLaunchSpinner()
+        }
 
         //viewmodel
-        setViewmodel()
+        setViewModel()
 
         //status
         observeStatus()
@@ -56,7 +66,7 @@ class SellProductFragment : Fragment() {
 
 
 
-    private fun setViewmodel() {
+    private fun setViewModel() {
         binding.viewmodel = sellProductViewmodel
     }
 
@@ -88,40 +98,29 @@ class SellProductFragment : Fragment() {
     }
 
 
-    fun spinnerFunction(view: View){
-        spinner = binding.categorySpinnerView
-        val opciones = listOf(
-            "Ropa y calzado de hombre",
-            "Vehiculos",
-            "Deportes",
-            "Animales",
-            "Muebles",
-            "Electrodomesticos",
-            "Juguetes y juegos",
-            "Salud y belleza",
-            "Sistemas informaticos",
-            "Utensilios escolares"
-        )
+    private suspend fun getCategoryAndLaunchSpinner() {
+        setCategorySpinner(categoryViewModel.getCategories())
+    }
 
-        val adapter = ArrayAdapter(view.context, R.layout.simple_spinner_item, opciones)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+    private fun setCategorySpinner(categoryList: List<Category>){
+        val categoryAdapter = ArrayAdapter(requireContext(), R.layout.spinner_item, categoryList.map { it.name })
+        binding.categorySpinnerView.adapter = categoryAdapter
 
-        val defaultCategory = "Muebles"
-        val defaultCategoryPosition = opciones.indexOf(defaultCategory)
-        spinner.setSelection(defaultCategoryPosition)
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.categorySpinnerView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
             ) {
-                val selectedOption = parent?.getItemAtPosition(position).toString()
-                sellProductViewmodel.category.value = selectedOption
+                val selectedCategory = categoryList[position]
+                sellProductViewmodel.category.value = selectedCategory.name
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                TODO("Not yet implemented")
             }
         }
+
     }
 }

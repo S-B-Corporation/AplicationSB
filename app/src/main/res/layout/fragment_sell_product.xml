@@ -60,21 +60,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_edit_text_view" />
 
+
         <Spinner
             android:id="@+id/category_spinner_view"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/default_gap"
             android:layout_marginTop="@dimen/small_gap"
             android:layout_marginEnd="@dimen/default_gap"
-            android:background="@drawable/edit_text_sell_product"
-            android:drawableEnd="@drawable/down_arrow"
-            android:ems="10"
-            android:inputType="text"
-            android:outlineProvider="none"
-            android:padding="@dimen/small_gap"
-            android:textColorHint="@color/gray"
-            android:text="holaquetal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category_sell_text_view" />

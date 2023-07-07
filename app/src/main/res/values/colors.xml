@@ -10,6 +10,8 @@
     <color name="otheractivitys">#18917D</color>
     <color name="transparent">#00000000</color>
 
+    <color name="custom_spinner_border_color">#000000</color>
+    <color name="custom_spinner_background_color">#FFFFFF</color>
 
 
 </resources>

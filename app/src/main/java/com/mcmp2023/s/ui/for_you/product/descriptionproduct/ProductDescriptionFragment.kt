@@ -3,6 +3,7 @@ package com.mcmp2023.s.ui.for_you.product.descriptionproduct
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,7 @@ class ProductDescriptionFragment : Fragment() {
         setViewModel()
         renderImage(viewModel.imageUrl, view )
         redirectWhatsApp(viewModel.phoneNumber.toString())
+        Log.d("PhoneNumber", viewModel.phoneNumber.toString())
     }
     private fun setViewModel() {
         binding.viewmodel = viewModel
@@ -55,6 +57,7 @@ class ProductDescriptionFragment : Fragment() {
     }
 
     private fun redirectWhatsApp(phoneNumber: String) {
+        Log.d("phonenumber", phoneNumber)
         binding.whatsappButton.setOnClickListener {
             val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
             val intent = Intent(Intent.ACTION_VIEW, uri)
