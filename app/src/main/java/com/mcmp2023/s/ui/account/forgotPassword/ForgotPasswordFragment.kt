@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentForgotPasswordBinding
 import com.mcmp2023.s.ui.account.forgotPassword.viewmodel.ForgotPasswordViewmodel
@@ -22,6 +23,10 @@ class ForgotPasswordFragment : Fragment() {
         ForgotPasswordViewmodel.Factory
     }
 
+    val app by lazy {
+        requireActivity().application as ProductApplication
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -33,7 +38,8 @@ class ForgotPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setViewModel()
         observeStatus()
-
+        addListenners()
+        validateData()
     }
 
     private fun setViewModel() {
@@ -58,6 +64,7 @@ class ForgotPasswordFragment : Fragment() {
             }
             //case success clear status and data the save token and pass to foryoufragment
             is ForgotPasswordUiStatus.Success -> {
+                cleanApplication()
                 forgotPasswordViewmodel.clearStatus()
                 forgotPasswordViewmodel.clearData()
                 Toast.makeText(requireContext(), "Se ha enviado un codigo a su correo electronico", Toast.LENGTH_SHORT).show()
@@ -65,6 +72,24 @@ class ForgotPasswordFragment : Fragment() {
             }
 
             else -> {}
+        }
+    }
+
+    private fun addListenners(){
+        binding.actionBackfpLogin.setOnClickListener{
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun cleanApplication(){
+        app.saveUserName("")
+        app.saveUserRole("")
+        app.saveAuthToken("")
+    }
+
+    private fun validateData(){
+        if (binding.emailForgotEdittext.text.isNullOrEmpty()){
+            binding.emailForgotEdittext.error = "Este campo no debe ir vacio"
         }
     }
 

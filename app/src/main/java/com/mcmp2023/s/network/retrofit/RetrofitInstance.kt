@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
  const val BASE_URL = "https://sybapimarketplace.shop"
-//const val BASE_URL = "https://apisb.onrender.com"
 
 object RetrofitInstance {
     private var TOKEN = ""
