@@ -40,6 +40,7 @@ class ProductApplication :  Application() {
     }
 
     fun getToken(): String = prefs.getString(USER_TOKEN, "")!!
+    fun getUsername(): String = prefs.getString(USER_NAME, "")!!
 
     //fun getRole(): String = prefs.getString(USER_ROLE, "")!!
 
@@ -75,10 +76,17 @@ class ProductApplication :  Application() {
         editor.apply()
     }
 
+    fun saveUserName(name: String){
+        val editor = prefs.edit()
+        editor.putString(USER_NAME, name)
+        editor.apply()
+    }
+
 
     companion object {
         const val USER_TOKEN = "user_token"
         const val USER_ROLE = "user_role"
+        const val USER_NAME = "user_name"
     }
 
     val categoryRepository : CategoryRepository by lazy {

@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentProfileBinding
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
+
+    val app by lazy {
+        requireActivity().application as ProductApplication
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +27,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.usernameTextView.text = app.getUsername()
 
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)

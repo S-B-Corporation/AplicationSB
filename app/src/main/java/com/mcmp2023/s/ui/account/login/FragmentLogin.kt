@@ -46,6 +46,7 @@ class fragmentLogin : Fragment() {
         setViewModel() //setting the view model on the data binding
         observeStatus() // Observing change in the login status
         showPassword() // showing or hiding password
+        validateLogin()
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.otheractivitys)
@@ -89,7 +90,9 @@ class fragmentLogin : Fragment() {
             //case success clear status and data the save token and pass to foryoufragment
             is LoginUiStatus.Success -> {
                 val role = status.response.role
+                val name = status.response.name
                 app.saveUserRole(role)
+                app.saveUserName(name)
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
 
