@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.data.db.models.Category
+import androidx.core.content.ContextCompat
 import com.mcmp2023.s.databinding.FragmentSellProductBinding
 import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
 import com.mcmp2023.s.ui.for_you.product.sellproduct.viewmodel.SellProductViewmodel
@@ -51,6 +52,10 @@ class SellProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         sellProductViewmodel.token.value = app.getToken()
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), com.mcmp2023.s.R.color.third)
+        //find Spinner
+        spinner = binding.categorySpinnerView
+        val opciones = listOf("Opción 1", "Opción 2", "Opción 3")
 
         //spinner
         CoroutineScope(Dispatchers.Main).launch {

@@ -42,12 +42,13 @@
             android:id="@+id/action_backtologin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginStart="8dp"
             android:contentDescription="@string/party_content_description"
             android:src="@drawable/party_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/logoImageView"
+            app:layout_constraintBottom_toTopOf="@+id/iniciarsesionTextView"
             app:layout_constraintStart_toEndOf="@+id/logoImageView"
-            app:layout_constraintTop_toTopOf="@+id/logoImageView" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444" />
 
         <TextView
             android:id="@+id/textView2"

@@ -2,11 +2,13 @@ package com.mcmp2023.s.ui.account.login
 
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
@@ -44,7 +46,11 @@ class fragmentLogin : Fragment() {
         setViewModel() //setting the view model on the data binding
         observeStatus() // Observing change in the login status
         showPassword() // showing or hiding password
+        validateLogin()
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.otheractivitys)
+        }
         //setting click listener for the register button
         binding.actionRegisterTextView.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentLogin_to_createAccount)
@@ -83,10 +89,21 @@ class fragmentLogin : Fragment() {
             }
             //case success clear status and data the save token and pass to foryoufragment
             is LoginUiStatus.Success -> {
+                val role = status.response.role
+                val name = status.response.name
+                app.saveUserRole(role)
+                app.saveUserName(name)
                 loginViewModel.clearStatus()
                 loginViewModel.clearData()
-                app.saveAuthToken(status.token)
-                findNavController().navigate(R.id.forYouFragment)
+
+                if (role == "user") {
+                    app.saveAuthToken(status.response.token)
+                    findNavController().navigate(R.id.forYouFragment)
+                }
+                else{
+                    app.saveAuthToken(status.response.token)
+                    findNavController().navigate(R.id.action_fragmentLogin_to_adminUserFragment)
+                }
             }
             else -> {}
         }
@@ -101,7 +118,7 @@ class fragmentLogin : Fragment() {
             binding.TextFieldLoginEmail.error = "Este campo es necesario"
         }
         if (password.isBlank()) {
-            binding.TextFieldLoginPassword.error = "Este campop es neceario"
+            binding.TextFieldLoginPassword.error = "Este campo es neceario"
         }
     }
 
@@ -119,5 +136,6 @@ class fragmentLogin : Fragment() {
             }
         }
     }
+
 
 }

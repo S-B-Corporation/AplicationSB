@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/createAccount">
+    app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/createAccount"
         android:name="com.mcmp2023.s.ui.account.register.createAccount"
@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_fragmentLogin_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
@@ -90,6 +93,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_fragmentLogin"
             app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_settingsFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDescriptionFragment"
@@ -103,5 +109,32 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_restorePasword"
             app:destination="@id/restorePasword" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.mcmp2023.s.ui.start.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_createAccount"
+            app:destination="@id/createAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminUserFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminusers.AdminUserFragment"
+        android:label="AdminUserFragment" >
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminProfilesFragment"
+            app:destination="@id/adminProfilesFragment" />
+        <action
+            android:id="@+id/action_adminUserFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminProfilesFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminprofiles.AdminProfilesFragment"
+        android:label="AdminProfilesFragment" >
+        <action
+            android:id="@+id/action_adminProfilesFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
     </fragment>
 </navigation>

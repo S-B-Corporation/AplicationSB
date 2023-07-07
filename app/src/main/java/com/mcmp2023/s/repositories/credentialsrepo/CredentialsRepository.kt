@@ -10,12 +10,13 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class CredentialsRepository(private val api: AuthService) {
-    suspend fun login(email: String, password: String): ApiResponse<String>{
+    suspend fun login(email: String, password: String): ApiResponse<LoginResponse>{
         try{
             val response: LoginResponse =
                 api.login(LoginRequest(email, password))
+
             //returns token and succes message
-            return ApiResponse.Success(response.token)
+            return ApiResponse.Success(response)
         }catch(e: HttpException){
             //if code 400 return error 400 message
             if(e.code() == 400){

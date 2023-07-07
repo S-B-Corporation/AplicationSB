@@ -31,6 +31,11 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (!validateToken()){
+            Toast.makeText(requireContext(), "No puedes realizar esta acción", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_settingsFragment_to_fragmentLogin)
+        }
+
         binding.settingBakArrowImageView.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -41,6 +46,8 @@ class SettingsFragment : Fragment() {
     fun addListenners() {
         binding.actionLogout.setOnClickListener {
             app.saveAuthToken("")
+            app.saveUserRole("")
+            app.saveUserName("")
             Toast.makeText(
                 requireContext(),
                 "Se ha cerrado sesion exitosamente",
@@ -48,6 +55,16 @@ class SettingsFragment : Fragment() {
             ).show()
             findNavController().navigate(R.id.action_settingsFragment_to_fragmentLogin)
         }
+
+        binding.acionRestorepassword.setOnClickListener{
+            findNavController().navigate(R.id.action_settingsFragment_to_forgotPasswordFragment)
+        }
+    }
+
+    fun validateToken() : Boolean{
+        val token = app.getToken()
+        if (token != "") return true
+        else return false
     }
 
 
