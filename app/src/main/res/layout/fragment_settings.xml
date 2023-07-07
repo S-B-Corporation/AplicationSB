@@ -59,13 +59,14 @@
                     android:padding="@dimen/default_gap">
 
                     <Button
+                        android:id="@+id/acion_restorepassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/small_gap"
                         android:layout_marginBottom="@dimen/small_gap"
                         android:drawableLeft="@drawable/user_icon"
-                        android:foreground="@drawable/white_button_border"
                         android:fontFamily="@font/roboto_bold"
+                        android:foreground="@drawable/white_button_border"
                         android:text="@string/change_password_text"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"

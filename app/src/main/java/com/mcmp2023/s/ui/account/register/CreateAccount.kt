@@ -44,6 +44,7 @@ class createAccount : Fragment() {
         setViewModel() //setting the view model on the data binding
         setObserver() // Observing change in the login status
         showPassword() // showing or hiding password
+        validate()
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.otheractivitys)

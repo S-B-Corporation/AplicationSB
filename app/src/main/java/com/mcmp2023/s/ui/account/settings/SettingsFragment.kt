@@ -46,12 +46,18 @@ class SettingsFragment : Fragment() {
     fun addListenners() {
         binding.actionLogout.setOnClickListener {
             app.saveAuthToken("")
+            app.saveUserRole("")
+            app.saveUserName("")
             Toast.makeText(
                 requireContext(),
                 "Se ha cerrado sesion exitosamente",
                 Toast.LENGTH_SHORT
             ).show()
             findNavController().navigate(R.id.action_settingsFragment_to_fragmentLogin)
+        }
+
+        binding.acionRestorepassword.setOnClickListener{
+            findNavController().navigate(R.id.action_settingsFragment_to_forgotPasswordFragment)
         }
     }
 
