@@ -15,11 +15,11 @@ interface UserService {
         @Path("id") categoryName: String
     ) : DeleteUserResponse
 
-    @GET("/getAllClientes")
+    @GET("/allClients")
     suspend fun getUsers(): List<UserModel>
 
     //obtener productos por medio del id del cliente
 
     @GET("/cliente/productos/{id}")
-    suspend fun getProducts(): List<Product>
+    suspend fun getProducts(@Path("id") id : Int): List<Product>
 }
