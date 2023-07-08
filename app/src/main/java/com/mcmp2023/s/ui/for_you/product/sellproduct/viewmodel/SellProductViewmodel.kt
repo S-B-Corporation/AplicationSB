@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class SellProductViewmodel(private val repository: ProductRepository) : ViewModel() {
@@ -66,6 +67,10 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
             return
         }
 
+        val bitmap: Bitmap = bitmapLiveData.value ?: return
+
+        val filePart = bitmapToFilePart(bitmap)
+
 
 
         val productToSell =
@@ -75,7 +80,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
                 validatePrice(),
                 category.value!!,
                 phoneNumber.value!!,
-                !!
+                filePart
             )
         sellproduct(token.value.toString(), productToSell)
     }
@@ -101,6 +106,14 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
 
     fun clearStatus() {
         _status.value = SellProductUiStatus.Resume
+    }
+
+    fun bitmapToFilePart(bitmap: Bitmap): MultipartBody.Part {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        val requestBody = RequestBody.create(MediaType.parse("image/jpeg"), byteArray)
+        return MultipartBody.Part.createFormData("imagen", "imagen.jpg", requestBody)
     }
 
     companion object {
