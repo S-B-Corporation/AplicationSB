@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mcmp2023.s.ui.for_you.product.sellproduct.viewmodel.SellProductViewmodel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,6 +40,7 @@
             android:inputType="text"
             android:outlineProvider="none"
             android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.title}"
             android:textColor="@color/white"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,20 +60,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_edit_text_view" />
 
+
         <Spinner
             android:id="@+id/category_spinner_view"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/default_gap"
             android:layout_marginTop="@dimen/small_gap"
             android:layout_marginEnd="@dimen/default_gap"
-            android:background="@drawable/edit_text_sell_product"
-            android:drawableEnd="@drawable/down_arrow"
-            android:ems="10"
-            android:inputType="text"
-            android:outlineProvider="none"
-            android:padding="@dimen/small_gap"
-            android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category_sell_text_view" />
@@ -97,6 +98,7 @@
             android:inputType="text"
             android:outlineProvider="none"
             android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.description}"
             android:textColor="@color/white"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +112,7 @@
             android:layout_marginStart="@dimen/default_gap"
             android:layout_marginTop="@dimen/small_gap"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/State_text"
+            android:text="@string/phonenumber_text_view"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_edit_text_view" />
@@ -125,10 +127,11 @@
             android:background="@drawable/edit_text_sell_product"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="@string/state_hint"
+            android:hint="@string/phonenumber_hint_text"
             android:inputType="text"
             android:outlineProvider="none"
             android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.phoneNumber}"
             android:textColor="@color/white"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,9 +161,10 @@
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
             android:hint="@string/price_hint"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:outlineProvider="none"
             android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.price}"
             android:textColor="@color/white"
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -245,6 +249,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:onClick="@{() -> viewmodel.onSellproduct()}"
             android:id="@+id/action_publish_product"
             android:layout_width="222dp"
             android:layout_height="52dp"

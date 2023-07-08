@@ -3,6 +3,7 @@ package com.mcmp2023.s.ui.for_you.product.descriptionproduct
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +58,7 @@ class ProductDescriptionFragment : Fragment() {
             .error(R.drawable.no_image_icon)
             .into(binding.productImage)
     }
+
 
     private fun redirectWhatsApp(phoneNumberLiveData: MutableLiveData<String>, titleLiveData: MutableLiveData<String>) {
         binding.whatsappButton.setOnClickListener {

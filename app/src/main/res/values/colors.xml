@@ -12,6 +12,8 @@
     <color name="third">#070812</color>
 
 
+    <color name="custom_spinner_border_color">#000000</color>
+    <color name="custom_spinner_background_color">#FFFFFF</color>
 
 
 </resources>
