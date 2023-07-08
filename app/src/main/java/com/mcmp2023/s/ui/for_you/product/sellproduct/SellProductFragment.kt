@@ -1,6 +1,10 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct
 
+import android.Manifest
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +13,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
@@ -24,6 +29,9 @@ import kotlinx.coroutines.launch
 
 
 class SellProductFragment : Fragment() {
+
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var imageToUpload: Bitmap
 
     private lateinit var spinner: Spinner
 
@@ -41,6 +49,13 @@ class SellProductFragment : Fragment() {
         requireActivity().application as ProductApplication
     }
 
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            isGranted ->
+            val message = if(isGranted) "Permission Granted" else "Permission Rejected"
+            Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -51,8 +66,10 @@ class SellProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+
         sellProductViewmodel.token.value = app.getToken()
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), com.mcmp2023.s.R.color.third)
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.third)
         //find Spinner
         spinner = binding.categorySpinnerView
         val opciones = listOf("Opción 1", "Opción 2", "Opción 3")
@@ -67,6 +84,9 @@ class SellProductFragment : Fragment() {
 
         //status
         observeStatus()
+
+        //
+        addListenners()
     }
 
 
@@ -102,6 +122,25 @@ class SellProductFragment : Fragment() {
         }
     }
 
+    private fun addListenners(){
+        binding.addImageCard.setOnClickListener{
+            dispatchTakePictureIntent()
+            sellProductViewmodel.setBitmap(imageToUpload)
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (takePictureIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val imageBitmap = data?.extras?.get("data") as Bitmap
+        imageToUpload = imageBitmap
+    }
 
     private suspend fun getCategoryAndLaunchSpinner() {
         setCategorySpinner(categoryViewModel.getCategories())

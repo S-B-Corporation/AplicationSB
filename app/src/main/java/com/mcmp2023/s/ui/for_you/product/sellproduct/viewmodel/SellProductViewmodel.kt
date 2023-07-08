@@ -1,5 +1,7 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct.viewmodel
 
+import android.graphics.Bitmap
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -25,11 +27,12 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
     val phoneNumber = MutableLiveData("")
     val token = MutableLiveData("")
 
-    //image
-    val image =
-        File("/home/david/datas/asd/ProyectoMovilesClon01/AplicationSB/app/src/main/res/drawable/test.png")
-    val requestFile = RequestBody.create(MediaType.parse("image/"), image)
-    val imagePart = MultipartBody.Part.createFormData("image", image.name, requestFile)
+    private val _bitmapLiveData = MutableLiveData<Bitmap>()
+    val bitmapLiveData: LiveData<Bitmap> = _bitmapLiveData
+
+    fun setBitmap(bitmap: Bitmap){
+        _bitmapLiveData.value = bitmap
+    }
 
     private val _status = MutableLiveData<SellProductUiStatus>(SellProductUiStatus.Resume)
 
@@ -62,6 +65,9 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
             _status.value = SellProductUiStatus.ErrorWithMessage("Wrong Data")
             return
         }
+
+
+
         val productToSell =
             SellProductRequest(
                 title.value!!,
@@ -69,7 +75,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
                 validatePrice(),
                 category.value!!,
                 phoneNumber.value!!,
-                ""
+                !!
             )
         sellproduct(token.value.toString(), productToSell)
     }
@@ -107,7 +113,3 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
     }
 
 }
-
-/*
-*
-* */
