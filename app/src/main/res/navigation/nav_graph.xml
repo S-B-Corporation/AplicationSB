@@ -68,6 +68,9 @@
         android:id="@+id/sellProductFragment"
         android:name="com.mcmp2023.s.ui.for_you.product.sellproduct.SellProductFragment"
         android:label="SellProductFragment">
+        <action
+            android:id="@+id/action_sellProductFragment_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
     </fragment>
 
     <!-- Mantienes los cambios de la segunda rama -->
