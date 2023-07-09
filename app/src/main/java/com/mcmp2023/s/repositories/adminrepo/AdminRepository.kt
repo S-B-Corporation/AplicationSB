@@ -10,8 +10,12 @@ class AdminRepository (private val api: UserService) {
         return response
     }
 
-    suspend fun getProductsByUser(id: Int) : List<Product> {
+    suspend fun getProductsByUser(id: String) : List<Product> {
         val response = api.getProducts(id)
-        return response
+        return response.products
+    }
+
+    suspend fun deleteUsers(token: String, id: String) {
+        api.deleteUser(token, id)
     }
 }

@@ -8,12 +8,17 @@ class UsersRecyclerViewHolder(private val binding: UserItemBinding) : RecyclerVi
 
     fun bind(
         user: UserModel,
-        clickListener: (UserModel) -> Unit
+        productsClickListener: (UserModel) -> Unit,
+        deleteClickListener: (UserModel) -> Unit
     ) {
         binding.titleTextView.text = user.name
 
         binding.modelCard.setOnClickListener{
-            clickListener(user)
+            productsClickListener(user)
+        }
+
+        binding.deleteButton.setOnClickListener {
+            deleteClickListener(user)
         }
     }
 

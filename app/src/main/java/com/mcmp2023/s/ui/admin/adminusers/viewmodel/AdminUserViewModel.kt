@@ -14,6 +14,8 @@ class AdminUserViewModel(private val adminRepository: AdminRepository) : ViewMod
     suspend fun getUsers() = adminRepository.getUsers()
 
 
+    suspend fun deleteUser(token: String, id: String) = adminRepository.deleteUsers(token, id)
+
     companion object {
         val Factory = viewModelFactory {
             initializer {

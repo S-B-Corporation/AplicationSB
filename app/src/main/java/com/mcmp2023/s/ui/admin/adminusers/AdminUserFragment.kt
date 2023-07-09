@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mcmp2023.s.ProductApplication
 import com.mcmp2023.s.R
 import com.mcmp2023.s.data.db.models.UserModel
 import com.mcmp2023.s.databinding.FragmentAdminUserBinding
@@ -34,6 +35,10 @@ class AdminUserFragment : Fragment() {
         AdminProfilesViewModel.Factory
     }
 
+    private val app by lazy {
+        requireActivity().application as ProductApplication
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,9 +58,11 @@ class AdminUserFragment : Fragment() {
     private fun setRecyclerView(view: View) {
         binding.usersRecyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        adapter = UsersRecyclerViewAdapter {
+        adapter = UsersRecyclerViewAdapter ({
             showSelectedUser(it)
-        }
+        }, {
+            deleteUser(it)
+        })
 
         binding.usersRecyclerView.adapter = adapter
         displayUsers()
@@ -73,6 +80,16 @@ class AdminUserFragment : Fragment() {
     private fun showSelectedUser(user: UserModel) {
         profileViewModel.setSelectedUser(user)
         findNavController().navigate(R.id.action_adminUserFragment_to_adminProfilesFragment)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun deleteUser(user: UserModel) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val token = app.getToken()
+            userViewModel.deleteUser("Bearer $token", user.ID)
+            adapter.setData(userViewModel.getUsers())
+            adapter.notifyDataSetChanged()
+        }
     }
 
 

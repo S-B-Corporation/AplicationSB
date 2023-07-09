@@ -1,5 +1,7 @@
 package com.mcmp2023.s.ui.admin.adminprofiles.viewmodel
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
@@ -15,10 +17,13 @@ class AdminProfilesViewModel(private val adminRepository: AdminRepository) : Vie
     var productName = ""
 
     var name = ""
-    var id = 0
+    var id = ""
 
     fun setSelectedUser(user: UserModel) {
-        id = user.ID
+        id = user.ID.toString()
+        Log.d("profile_id_string", id)
+        Log.d("profile_id_string", user.toString())
+        Log.d("profile_id", user.ID.toString())
         name = user.name
     }
 

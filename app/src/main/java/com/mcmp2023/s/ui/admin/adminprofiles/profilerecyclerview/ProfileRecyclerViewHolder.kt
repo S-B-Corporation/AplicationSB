@@ -13,6 +13,7 @@ class ProfileRecyclerViewHolder(private val binding: ProductItemBinding) : Recyc
     fun bind(product: Product, clickListener: (Product) -> Unit) {
         binding.cardProductName.text = product.tittle
         binding.cardProductPrice.text = "$ ${product.price}"
+        binding.favoriteImageView.setImageResource(R.drawable.trash)
 
         val imageName = product.image?.substringAfterLast("/")
 
@@ -24,6 +25,10 @@ class ProfileRecyclerViewHolder(private val binding: ProductItemBinding) : Recyc
 
         binding.productCard.setOnClickListener {
             clickListener(product)
+        }
+
+        binding.favoriteImageView.setOnClickListener {
+
         }
     }
 

@@ -2,6 +2,7 @@ package com.mcmp2023.s.ui.admin.adminprofiles
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,9 @@ class AdminProfilesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.profileNameTextView.text = viewModel.name
+        binding.actionBackfpLogin.setOnClickListener {
+            findNavController().popBackStack()
+        }
         setRecyclerView(view)
 
     }
@@ -60,6 +64,8 @@ class AdminProfilesFragment : Fragment() {
     private fun displayProducts() {
         CoroutineScope(Dispatchers.Main).launch {
             adapter.setData(viewModel.getProductsByUser())
+            val product = viewModel.getProductsByUser()
+            Log.d("product_profile", product.toString())
         }
         adapter.notifyDataSetChanged()
     }

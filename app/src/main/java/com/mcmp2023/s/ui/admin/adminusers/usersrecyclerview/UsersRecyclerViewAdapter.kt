@@ -1,14 +1,15 @@
 package com.mcmp2023.s.ui.admin.adminusers.usersrecyclerview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mcmp2023.s.data.db.models.UserModel
 import com.mcmp2023.s.databinding.UserItemBinding
-import kotlin.math.log
 
-class UsersRecyclerViewAdapter(private val clickListener: (UserModel) -> Unit) : RecyclerView.Adapter<UsersRecyclerViewHolder> (){
+class UsersRecyclerViewAdapter(
+    private val productsClickListener: (UserModel) -> Unit,
+    private val deleteClickListener: (UserModel) -> Unit
+) : RecyclerView.Adapter<UsersRecyclerViewHolder>() {
 
     private val users = ArrayList<UserModel>()
 
@@ -23,7 +24,7 @@ class UsersRecyclerViewAdapter(private val clickListener: (UserModel) -> Unit) :
     override fun onBindViewHolder(holder: UsersRecyclerViewHolder, position: Int) {
         val user = users[position]
 
-        holder.bind(user, clickListener)
+        holder.bind(user, productsClickListener, deleteClickListener)
     }
 
     fun setData(usersList: List<UserModel>) {
