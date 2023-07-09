@@ -53,5 +53,7 @@
     <string name="phonenumber_text_view">Numero de contacto</string>
     <string name="send_code_text">Ingresa tú correo electrónico donde te enviaremos un código con el cual podrás establecer una nueva contraseña</string>
     <string name="admin_text_view">Administrador</string>
-
+    <string name="delete_text">Eliminar</string>
+    <string name="greeting_admin_text">Bienvenido, Admin</string>
+    <string name="profile_text">Perfil</string>
 </resources>

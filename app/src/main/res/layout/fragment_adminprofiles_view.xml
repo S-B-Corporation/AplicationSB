@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Perfil"
+                android:text="@string/profile_text"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toStartOf="@+id/user_image_view"
@@ -60,49 +60,31 @@
                 tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/sell_text_view"
+                android:id="@+id/profile_name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_gap"
                 android:fontFamily="@font/roboto_regular"
-                android:text="User name"
+                tools:text="User name"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-
-            <LinearLayout
-                android:id="@+id/search_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_gap"
-                android:layout_marginTop="@dimen/default_gap"
-                android:layout_marginEnd="@dimen/default_gap"
-                android:background="@drawable/search_style"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sell_text_view"
-                android:orientation="horizontal">
-
-
-            </LinearLayout>
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/for_you_nav_host"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profile_recycler_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/default_gap"
-                android:layout_marginTop="@dimen/default_gap"
+                android:layout_marginTop="@dimen/medium_gap"
                 android:layout_marginEnd="@dimen/default_gap"
                 android:layout_marginBottom="@dimen/default_gap"
-                app:defaultNavHost="true"
+                tools:itemCount="4"
+                tools:listitem="@layout/product_item"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/search_layout"
-                app:navGraph="@navigation/for_you_nav_graph" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_name_text_view" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

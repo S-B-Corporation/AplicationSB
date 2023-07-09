@@ -1,7 +1,9 @@
 package com.mcmp2023.s.data.db.models
 
+import com.google.gson.annotations.SerializedName
+
 data class UserModel (
-    val ID: Int,
+   @SerializedName("_id") val ID: String,
     val name: String,
     val email: String,
     val password: String,
