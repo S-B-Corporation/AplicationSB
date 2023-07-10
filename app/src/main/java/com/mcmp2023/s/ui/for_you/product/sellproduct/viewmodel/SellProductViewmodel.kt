@@ -75,7 +75,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
                 validatePrice(),
                 category.value!!,
                 phoneNumber.value!!,
-                !!
+                ""
             )
         sellproduct(token.value.toString(), productToSell)
     }
