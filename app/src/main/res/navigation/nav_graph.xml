@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_userProductsFragment"
+            app:destination="@id/userProductsFragment" />
     </fragment>
 
     <!-- Mantienes los cambios de la segunda rama -->
@@ -137,4 +140,9 @@
             android:id="@+id/action_adminProfilesFragment_to_adminUserFragment"
             app:destination="@id/adminUserFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/userProductsFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.userProducts.UserProductsFragment"
+        android:label="fragment_user_products"
+        tools:layout="@layout/fragment_user_products" />
 </navigation>

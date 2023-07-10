@@ -33,6 +33,10 @@ class ProfileFragment : Fragment() {
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
+
+        binding.productsButton.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_userProductsFragment)
+        }
     }
 
 }

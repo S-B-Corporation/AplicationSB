@@ -60,7 +60,7 @@ class ProductApplication :  Application() {
         getUserService()
     }
 
-    private val userRepository: AdminRepository by lazy {
+    val userRepository: AdminRepository by lazy {
         AdminRepository(userService)
     }
 
