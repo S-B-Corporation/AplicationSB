@@ -6,7 +6,9 @@ import com.mcmp2023.s.network.ApiResponse
 import com.mcmp2023.s.network.dto.sellproduct.SellProductRequest
 import com.mcmp2023.s.network.dto.sellproduct.SellProductResponse
 import com.mcmp2023.s.network.service.ProductService
+import okhttp3.MediaType
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -27,10 +29,18 @@ class ProductRepository(
     suspend fun searchProduct(productName: String) = api.searchProduct(productName)
 
     suspend fun sellProduct(
-        token: String, productToSell: SellProductRequest
+        token: String, image: MultipartBody.Part, titulo: String, description: String, pryce: Float, category: String, phoneNumber: String
     ): ApiResponse<String> {
         try {
-            val response: SellProductResponse = api.sellProduct(token, productToSell)
+            val response: SellProductResponse = api.sellProduct(
+                token,
+                image,
+                titulo,
+                description,
+                pryce,
+                category,
+                phoneNumber
+            )
 
             return ApiResponse.Success(response.message)
         } catch (e: HttpException) {

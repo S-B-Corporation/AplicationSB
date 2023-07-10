@@ -31,7 +31,6 @@ import kotlinx.coroutines.launch
 class SellProductFragment : Fragment() {
 
     private val REQUEST_IMAGE_CAPTURE = 1
-    private lateinit var imageToUpload: Bitmap
 
     private lateinit var spinner: Spinner
 
@@ -125,7 +124,6 @@ class SellProductFragment : Fragment() {
     private fun addListenners(){
         binding.addImageCard.setOnClickListener{
             dispatchTakePictureIntent()
-            sellProductViewmodel.setBitmap(imageToUpload)
         }
     }
 
@@ -139,7 +137,7 @@ class SellProductFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val imageBitmap = data?.extras?.get("data") as Bitmap
-        imageToUpload = imageBitmap
+        sellProductViewmodel.setBitmap(imageBitmap)
     }
 
     private suspend fun getCategoryAndLaunchSpinner() {
@@ -162,7 +160,7 @@ class SellProductFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                //
             }
         }
 

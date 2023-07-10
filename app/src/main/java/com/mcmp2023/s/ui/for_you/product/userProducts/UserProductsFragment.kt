@@ -52,6 +52,7 @@ class UserProductsFragment : Fragment() {
         binding.userProductRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
 
         adapter = UserProductsVIewAdapter()
+        binding.userProductRecyclerView.adapter = adapter
     }
 
     private fun observeStatus(){
