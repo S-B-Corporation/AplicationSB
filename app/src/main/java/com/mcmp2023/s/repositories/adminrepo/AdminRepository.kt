@@ -19,15 +19,22 @@ class AdminRepository (private val api: UserService) {
             val response: List<Product> = api.getUserProduct(token)
 
             return ApiResponse.Success(response)
-        }
-        catch (e: HttpException){
-            if (e.code() == 400){
+        } catch (e: HttpException) {
+            if (e.code() == 400) {
                 return ApiResponse.ErrorWithMessage("wrong data")
             }
             return ApiResponse.Error(e)
-        }
-        catch (e: IOException){
+        } catch (e: IOException) {
             return ApiResponse.Error(e)
         }
+    }
+
+    suspend fun getProductsByUser(id: String) : List<Product> {
+        val response = api.getProducts(id)
+        return response.products
+    }
+
+    suspend fun deleteUsers(token: String, id: String) {
+        api.deleteUser(token, id)
     }
 }

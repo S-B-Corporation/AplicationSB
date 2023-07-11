@@ -8,5 +8,5 @@ data class SellProductRequest(
     val precio: Float,
     val categoriaNombre: String,
     val numerodecontacto: String,
-    val image: MultipartBody.Part
+    val image: String
 )

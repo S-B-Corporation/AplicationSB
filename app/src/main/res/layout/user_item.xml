@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="15dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/model_card"
-        android:layout_width="377dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,55 +15,61 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000000"
+            android:background="@color/primary"
             android:orientation="horizontal"
             android:padding="16dp">
 
             <ImageView
-                android:layout_width="47dp"
-                android:layout_height="55dp"
-                android:src="@drawable/baseline_person_24" />
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@drawable/user_icon" />
+
 
             <LinearLayout
-                android:layout_width="179dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/small_gap"
+                android:paddingEnd="2dp">
 
                 <TextView
                     android:id="@+id/titleTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    tools:text="name" />
 
+
+                <Button
+                    android:id="@+id/delete_button"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/secondary"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="@string/delete_text"
+                    android:textSize="12sp" />
 
             </LinearLayout>
-
-
-            <Button
-                android:id="@+id/delete_button"
-                android:layout_width="119dp"
-                android:layout_height="54dp"
-                android:backgroundTint="@color/secondary"
-                android:text="Eliminar" />
 
         </LinearLayout>
 
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="3px"
+            android:layout_height="1dp"
             android:layout_gravity="bottom"
-            android:background="#FFFFFF" />
+            android:background="@color/white" />
 
     </androidx.cardview.widget.CardView>
 
+</layout>
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>

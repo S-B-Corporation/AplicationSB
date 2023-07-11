@@ -2,6 +2,7 @@ package com.mcmp2023.s.data
 
 import com.mcmp2023.s.R
 import com.mcmp2023.s.data.db.models.Category
+
 var id1 = "1"
 
 var categoryName1 = "Vehiculos"

@@ -25,7 +25,6 @@ class ProductRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ProductRecyclerViewHolder, position: Int) {
         val product = products[position]
 
-
         holder.bind(product, descriptionClickListener, productViewModel)
     }
 
