@@ -82,7 +82,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
             return
         }
 
-        val bitmap: Bitmap = bitmapLiveData.value ?: return
+        val bitmap: Bitmap = bitmapLiveData.value!!
 
         val filePart = bitmapToFilePart(bitmap)
 
@@ -125,7 +125,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
         val byteArray = byteArrayOutputStream.toByteArray()
         val requestBody = RequestBody.create(MediaType.parse("image/jpeg"), byteArray)
-        return MultipartBody.Part.createFormData("imagen", "imagen.jpg", requestBody)
+        return MultipartBody.Part.createFormData("image", "imagen.jpg", requestBody)
     }
 
     companion object {

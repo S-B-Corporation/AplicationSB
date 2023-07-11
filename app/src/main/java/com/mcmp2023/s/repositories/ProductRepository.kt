@@ -35,11 +35,11 @@ class ProductRepository(
             val response: SellProductResponse = api.sellProduct(
                 token,
                 image,
-                titulo,
-                description,
-                pryce,
-                category,
-                phoneNumber
+                RequestBody.create(MultipartBody.FORM,titulo),
+                RequestBody.create(MultipartBody.FORM,description),
+                RequestBody.create(MultipartBody.FORM,pryce.toString()),
+                RequestBody.create(MultipartBody.FORM,category),
+                RequestBody.create(MultipartBody.FORM,phoneNumber)
             )
 
             return ApiResponse.Success(response.message)

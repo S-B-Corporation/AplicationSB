@@ -35,10 +35,10 @@ interface ProductService {
     suspend fun sellProduct(
         @Header("Authorization") token: String,
         @Part image: MultipartBody.Part,
-        @Part("titulo") titulo: String,
-        @Part("descripcion") descripcion: String,
-        @Part("precio") precio: Float,
-        @Part("categoriaNombre") categoriaNombre: String,
-        @Part("numerodecontacto") numerodecontacto: String
+        @Part("titulo") titulo: RequestBody,
+        @Part("descripcion") descripcion: RequestBody,
+        @Part("precio") precio: RequestBody,
+        @Part("categoriaNombre") categoriaNombre: RequestBody,
+        @Part("numerodecontacto") numerodecontacto: RequestBody
     ): SellProductResponse
 }
