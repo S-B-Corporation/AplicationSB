@@ -146,7 +146,7 @@ class SellProductFragment : Fragment() {
                 Toast.makeText(requireContext(), "No has seleccionado ninguna imagen para subir", Toast.LENGTH_LONG).show()
             }
         } else {
-            Toast.makeText(requireContext(), "Ha ocurrido un error al seleccionar la imagen", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "No has seleccionado una imagen", Toast.LENGTH_LONG).show()
         }
     }
 
