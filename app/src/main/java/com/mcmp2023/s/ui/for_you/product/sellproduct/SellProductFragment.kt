@@ -1,6 +1,7 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -31,7 +32,6 @@ import kotlinx.coroutines.launch
 class SellProductFragment : Fragment() {
 
     private val REQUEST_IMAGE_CAPTURE = 1
-    private lateinit var imageToUpload: Bitmap
 
     private lateinit var spinner: Spinner
 
@@ -125,7 +125,6 @@ class SellProductFragment : Fragment() {
     private fun addListenners(){
         binding.addImageCard.setOnClickListener{
             dispatchTakePictureIntent()
-            sellProductViewmodel.setBitmap(imageToUpload)
         }
     }
 
@@ -138,8 +137,17 @@ class SellProductFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val imageBitmap = data?.extras?.get("data") as Bitmap
-        imageToUpload = imageBitmap
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            val imageBitmap = data.extras?.get("data") as? Bitmap
+
+            if (imageBitmap != null) {
+                sellProductViewmodel.setBitmap(imageBitmap)
+            } else {
+                Toast.makeText(requireContext(), "No has seleccionado ninguna imagen para subir", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(requireContext(), "No has seleccionado una imagen", Toast.LENGTH_LONG).show()
+        }
     }
 
     private suspend fun getCategoryAndLaunchSpinner() {
@@ -162,7 +170,7 @@ class SellProductFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                //
             }
         }
 

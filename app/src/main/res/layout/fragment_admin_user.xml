@@ -48,13 +48,13 @@
                 android:id="@+id/action_admin_settings"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="@dimen/small_gap"
-                android:layout_marginEnd="@dimen/small_gap"
+                android:layout_marginTop="@dimen/big_gap"
+                android:layout_marginEnd="@dimen/big_gap"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/gear" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/users_recycler_view"

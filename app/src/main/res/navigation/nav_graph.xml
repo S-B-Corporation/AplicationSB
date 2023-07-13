@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_userProductsFragment"
+            app:destination="@id/userProductsFragment" />
     </fragment>
 
     <!-- Mantienes los cambios de la segunda rama -->
@@ -128,6 +131,9 @@
         <action
             android:id="@+id/action_adminUserFragment_to_fragmentLogin"
             app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminSettingsFragment"
+            app:destination="@id/adminSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminProfilesFragment"
@@ -136,5 +142,19 @@
         <action
             android:id="@+id/action_adminProfilesFragment_to_adminUserFragment"
             app:destination="@id/adminUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProductsFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.userProducts.UserProductsFragment"
+        android:label="fragment_user_products"
+        tools:layout="@layout/fragment_user_products" />
+    <fragment
+        android:id="@+id/adminSettingsFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminsettings.AdminSettingsFragment"
+        android:label="fragment_admin_settings"
+        tools:layout="@layout/fragment_admin_settings" >
+        <action
+            android:id="@+id/action_adminSettingsFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
     </fragment>
 </navigation>

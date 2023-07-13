@@ -1,4 +1,4 @@
-package com.mcmp2023.s.network.dto.getUserProducts
+package com.mcmp2023.s.network.dto.getUserProductsById
 
 import com.google.gson.annotations.SerializedName
 import com.mcmp2023.s.data.db.models.Product

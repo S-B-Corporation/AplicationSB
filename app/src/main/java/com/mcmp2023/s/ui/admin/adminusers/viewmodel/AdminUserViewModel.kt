@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.mcmp2023.s.ProductApplication
-import com.mcmp2023.s.data.db.models.UserModel
-import com.mcmp2023.s.repositories.UserRepository
 import com.mcmp2023.s.repositories.adminrepo.AdminRepository
 
 class AdminUserViewModel(private val adminRepository: AdminRepository) : ViewModel() {

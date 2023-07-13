@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class SellProductViewmodel(private val repository: ProductRepository) : ViewModel() {
@@ -30,7 +31,7 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
     private val _bitmapLiveData = MutableLiveData<Bitmap>()
     val bitmapLiveData: LiveData<Bitmap> = _bitmapLiveData
 
-    fun setBitmap(bitmap: Bitmap){
+    fun setBitmap(bitmap: Bitmap) {
         _bitmapLiveData.value = bitmap
     }
 
@@ -48,10 +49,25 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
         }
     }
 
-    private fun sellproduct(token: String, productReq: SellProductRequest) {
+    private fun sellproduct(
+        token: String,
+        image: MultipartBody.Part,
+        titulo: String,
+        description: String,
+        pryce: Float,
+        category: String,
+        phoneNumber: String
+    ) {
         viewModelScope.launch {
             _status.postValue(
-                when (val response = repository.sellProduct("Bearer $token", productReq)) {
+                when (val response = repository.sellProduct(
+                    "Bearer $token", image,
+                    titulo,
+                    description,
+                    pryce,
+                    category,
+                    phoneNumber
+                )) {
                     is ApiResponse.Error -> SellProductUiStatus.Error(response.exception)
                     is ApiResponse.ErrorWithMessage -> SellProductUiStatus.ErrorWithMessage(response.message)
                     is ApiResponse.Success -> SellProductUiStatus.Success
@@ -66,18 +82,19 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
             return
         }
 
+        val bitmap: Bitmap = bitmapLiveData.value!!
 
+        val filePart = bitmapToFilePart(bitmap)
 
-        val productToSell =
-            SellProductRequest(
-                title.value!!,
-                description.value!!,
-                validatePrice(),
-                category.value!!,
-                phoneNumber.value!!,
-                !!
-            )
-        sellproduct(token.value.toString(), productToSell)
+        sellproduct(
+            token.value.toString(),
+            filePart,
+            title.value!!,
+            description.value!!,
+            validatePrice(),
+            category.value!!,
+            phoneNumber.value!!
+        )
     }
 
     private fun validateData(): Boolean {
@@ -101,6 +118,14 @@ class SellProductViewmodel(private val repository: ProductRepository) : ViewMode
 
     fun clearStatus() {
         _status.value = SellProductUiStatus.Resume
+    }
+
+    fun bitmapToFilePart(bitmap: Bitmap): MultipartBody.Part {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        val requestBody = RequestBody.create(MediaType.parse("image/jpeg"), byteArray)
+        return MultipartBody.Part.createFormData("image", "imagen.jpg", requestBody)
     }
 
     companion object {
