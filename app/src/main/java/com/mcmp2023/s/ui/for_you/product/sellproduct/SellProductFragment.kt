@@ -1,6 +1,7 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -136,8 +137,17 @@ class SellProductFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val imageBitmap = data?.extras?.get("data") as Bitmap
-        sellProductViewmodel.setBitmap(imageBitmap)
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            val imageBitmap = data.extras?.get("data") as? Bitmap
+
+            if (imageBitmap != null) {
+                sellProductViewmodel.setBitmap(imageBitmap)
+            } else {
+                Toast.makeText(requireContext(), "No has seleccionado ninguna imagen para subir", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(requireContext(), "Ha ocurrido un error al seleccionar la imagen", Toast.LENGTH_LONG).show()
+        }
     }
 
     private suspend fun getCategoryAndLaunchSpinner() {

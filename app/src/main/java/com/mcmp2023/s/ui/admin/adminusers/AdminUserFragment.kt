@@ -51,7 +51,7 @@ class AdminUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setRecyclerView(view)
-
+        addListenners()
     }
 
 
@@ -89,6 +89,12 @@ class AdminUserFragment : Fragment() {
             userViewModel.deleteUser("Bearer $token", user.ID)
             adapter.setData(userViewModel.getUsers())
             adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun addListenners(){
+        binding.actionAdminSettings.setOnClickListener{
+            findNavController().navigate(R.id.action_adminUserFragment_to_adminSettingsFragment)
         }
     }
 
