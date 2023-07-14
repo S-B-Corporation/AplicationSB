@@ -1,6 +1,7 @@
 package com.mcmp2023.s.ui.for_you.product.sellproduct
 
 import android.Manifest
+import android.R
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,7 +19,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mcmp2023.s.ProductApplication
-import com.mcmp2023.s.R
 import com.mcmp2023.s.data.db.models.Category
 import androidx.core.content.ContextCompat
 import com.mcmp2023.s.databinding.FragmentSellProductBinding
@@ -74,7 +74,6 @@ class SellProductFragment : Fragment() {
         requestPermissionLauncher.launch(Manifest.permission.CAMERA)
 
         sellProductViewmodel.token.value = app.getToken()
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.third)
         //find Spinner
         spinner = binding.categorySpinnerView
         val opciones = listOf("Opción 1", "Opción 2", "Opción 3")
@@ -170,7 +169,7 @@ class SellProductFragment : Fragment() {
     }
 
     private fun setCategorySpinner(categoryList: List<Category>){
-        val categoryAdapter = ArrayAdapter(requireContext(), R.layout.spinner_item, categoryList.map { it.name })
+        val categoryAdapter = ArrayAdapter(requireContext(),  R.layout.simple_spinner_item, categoryList.map { it.name })
         binding.categorySpinnerView.adapter = categoryAdapter
 
         binding.categorySpinnerView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

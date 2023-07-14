@@ -30,6 +30,7 @@ class UserProductsFragment : Fragment() {
     }
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +51,6 @@ class UserProductsFragment : Fragment() {
 
     private fun setRecyclerView(view: View){
         binding.userProductRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
-
         adapter = UserProductsVIewAdapter()
         binding.userProductRecyclerView.adapter = adapter
     }

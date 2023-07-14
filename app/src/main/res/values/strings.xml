@@ -56,4 +56,6 @@
     <string name="delete_text">Eliminar</string>
     <string name="greeting_admin_text">Bienvenido, Admin</string>
     <string name="profile_text">Perfil</string>
+    <string name="start_greeting_text">Descubre los mejores productos</string>
+    <string name="start_text">comenzar</string>
 </resources>

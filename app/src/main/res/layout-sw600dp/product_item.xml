@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/product_card"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/gradient_stroke"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <!-- Media -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/product_image_item"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="@string/image_product_content_description"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/cardImageViewRounded"
+                tools:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:background="@drawable/rounded_corners_layout_style"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.25"
+                    android:orientation="vertical"
+                    android:padding="@dimen/small_gap"
+                    tools:ignore="NestedWeights">
+
+                    <!-- Title, secondary and supporting text -->
+                    <TextView
+                        android:id="@+id/card_product_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/white"
+                        tools:text="$129.99" />
+
+                    <TextView
+                        android:id="@+id/card_product_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Reloj Rolex" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/small_gap">
+
+                    <ImageView
+                        android:id="@+id/favorite_image_view"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/bookmark" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

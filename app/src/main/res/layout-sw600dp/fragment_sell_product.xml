@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mcmp2023.s.ui.for_you.product.sellproduct.viewmodel.SellProductViewmodel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/secondary_header_selector">
+
+        <TextView
+            android:id="@+id/tittle_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/big_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/title_text"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/title_edit_text_view"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/big_gap"
+            android:background="@drawable/edit_text_sell_product"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/title_hint"
+            android:inputType="text"
+            android:outlineProvider="none"
+            android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.title}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittle_text_view" />
+
+
+        <TextView
+            android:id="@+id/category_sell_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/category_text"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edit_text_view" />
+
+
+        <Spinner
+            android:id="@+id/category_spinner_view"
+            android:layout_width="0dp"
+            android:layout_height="75sp"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/big_gap"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_sell_text_view" />
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/description_text"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_spinner_view" />
+
+        <EditText
+            android:id="@+id/description_edit_text_view"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/big_gap"
+            android:background="@drawable/edit_text_sell_product"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/description_hint"
+            android:inputType="text"
+            android:outlineProvider="none"
+            android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.description}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_text_view" />
+
+        <TextView
+            android:id="@+id/status_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/phonenumber_text_view"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_edit_text_view" />
+
+        <EditText
+            android:id="@+id/status_edit_text_view"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/big_gap"
+            android:background="@drawable/edit_text_sell_product"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/phonenumber_hint_text"
+            android:inputType="text"
+            android:outlineProvider="none"
+            android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.phoneNumber}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_text_view" />
+
+        <TextView
+            android:id="@+id/price_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/price_text"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_edit_text_view" />
+
+        <EditText
+            android:id="@+id/price_edit_text_view"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/big_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginEnd="@dimen/big_gap"
+            android:background="@drawable/edit_text_sell_product"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/price_hint"
+            android:inputType="numberDecimal"
+            android:outlineProvider="none"
+            android:padding="@dimen/small_gap"
+            android:text="@={viewmodel.price}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_text_view" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_image_card"
+            style="@style/CardViewStyle"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="@dimen/small_gap"
+            app:layout_constraintEnd_toStartOf="@+id/addmore_image_card"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_edit_text_view">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/default_gap">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/camera_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/add_image_text"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addmore_image_card"
+            style="@style/CardViewStyle"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="@dimen/small_gap"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/add_image_card"
+            app:layout_constraintTop_toTopOf="@+id/add_image_card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/default_gap">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/add_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/add_more_text"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/action_publish_product"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="@dimen/big_gap"
+            android:backgroundTint="#FF018786"
+            android:fontFamily="@font/roboto_bold"
+            android:onClick="@{() -> viewmodel.onSellproduct()}"
+            android:text="@string/post_text"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_image_card" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
