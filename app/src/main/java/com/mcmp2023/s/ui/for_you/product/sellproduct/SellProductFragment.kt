@@ -92,6 +92,10 @@ class SellProductFragment : Fragment() {
 
         //
         addListenners()
+
+        validateData()
+
+
     }
 
 
@@ -192,7 +196,17 @@ class SellProductFragment : Fragment() {
         val tittle = binding.titleEditTextView.text.toString().trim()
         val description = binding.descriptionEditTextView.text.toString().trim()
         val phoneNumber = binding.statusEditTextView.text.toString().trim()
-        val price = binding.priceEditTextView.text.toString().trim()
+        val priceText = binding.priceEditTextView.text.toString().trim()
+        val price: Float
+
+        if (priceText.isNotEmpty()) {
+            price = priceText.toFloat()
+            if(price <= 0.0){
+                binding.priceEditTextView.error = "Este campo no debe ser menor o igual a cero"
+            }
+        } else {
+            // Manejar el caso de que el precio sea una cadena vacía
+        }
 
         if(tittle.isBlank()){
             binding.titleEditTextView.error = "Este campo no debe ir vacio"
@@ -203,11 +217,8 @@ class SellProductFragment : Fragment() {
         if(phoneNumber.isBlank()){
             binding.statusEditTextView.error = "Este campo no debe ir vacio"
         }
-        if (price.isBlank()){
+        if (priceText.isBlank()){
             binding.priceEditTextView.error = "Este campo no debe ir vacio"
-            if(price.toFloat() <= 0.0){
-                binding.priceEditTextView.error = "El precio no debe de ser menor a cero"
-            }
         }
 
     }
