@@ -54,6 +54,11 @@ class SellProductFragment : Fragment() {
             isGranted ->
             val message = if(isGranted) "Permission Granted" else "Permission Rejected"
             Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+            if(isGranted){
+                app.savePermissionStatus(true)
+            }else {
+                app.savePermissionStatus(false)
+            }
         }
 
     override fun onCreateView(
@@ -124,7 +129,13 @@ class SellProductFragment : Fragment() {
 
     private fun addListenners(){
         binding.addImageCard.setOnClickListener{
-            dispatchTakePictureIntent()
+            if(app.getPermissionStatus()){
+                dispatchTakePictureIntent()
+            }
+            else{
+                Toast.makeText(requireContext(), "No tienes pemiso para realizar esta acction", Toast.LENGTH_LONG).show()
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
         }
     }
 
@@ -171,6 +182,31 @@ class SellProductFragment : Fragment() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 //
+            }
+        }
+
+    }
+
+
+    fun validateData(){
+        val tittle = binding.titleEditTextView.text.toString().trim()
+        val description = binding.descriptionEditTextView.text.toString().trim()
+        val phoneNumber = binding.statusEditTextView.text.toString().trim()
+        val price = binding.priceEditTextView.text.toString().trim()
+
+        if(tittle.isBlank()){
+            binding.titleEditTextView.error = "Este campo no debe ir vacio"
+        }
+        if(description.isBlank()){
+            binding.descriptionEditTextView.error = "Este campo no debe ir vacio"
+        }
+        if(phoneNumber.isBlank()){
+            binding.statusEditTextView.error = "Este campo no debe ir vacio"
+        }
+        if (price.isBlank()){
+            binding.priceEditTextView.error = "Este campo no debe ir vacio"
+            if(price.toFloat() <= 0.0){
+                binding.priceEditTextView.error = "El precio no debe de ser menor a cero"
             }
         }
 

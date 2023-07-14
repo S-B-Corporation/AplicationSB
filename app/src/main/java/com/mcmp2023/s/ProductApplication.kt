@@ -41,6 +41,11 @@ class ProductApplication :  Application() {
 
     fun getToken(): String = prefs.getString(USER_TOKEN, "")!!
     fun getUsername(): String = prefs.getString(USER_NAME, "")!!
+    fun getUserRole(): String = prefs.getString(USER_ROLE, "")!!
+
+    fun getPermissionStatus(): Boolean {
+        return prefs.getBoolean("permission_granted", false)
+    }
 
     //fun getRole(): String = prefs.getString(USER_ROLE, "")!!
 
@@ -82,11 +87,17 @@ class ProductApplication :  Application() {
         editor.apply()
     }
 
+    fun savePermissionStatus(status: Boolean) {
+        val editor = prefs.edit()
+        editor.putBoolean("permission_granted", status)
+        editor.apply()
+    }
 
     companion object {
         const val USER_TOKEN = "user_token"
         const val USER_ROLE = "user_role"
         const val USER_NAME = "user_name"
+
     }
 
     val categoryRepository : CategoryRepository by lazy {

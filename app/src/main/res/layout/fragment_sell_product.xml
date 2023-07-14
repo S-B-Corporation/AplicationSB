@@ -68,6 +68,7 @@
             android:layout_marginStart="@dimen/default_gap"
             android:layout_marginTop="@dimen/small_gap"
             android:layout_marginEnd="@dimen/default_gap"
+            android:background="@drawable/edit_text_sell_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category_sell_text_view" />

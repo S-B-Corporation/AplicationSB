@@ -120,6 +120,12 @@
         <action
             android:id="@+id/action_startFragment_to_createAccount"
             app:destination="@id/createAccount" />
+        <action
+            android:id="@+id/action_startFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminUserFragment"
