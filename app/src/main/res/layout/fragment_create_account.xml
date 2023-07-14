@@ -176,7 +176,8 @@
                 android:minHeight="56dp"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                android:text=""/>
 
             <ImageView
                 android:id="@+id/confirm_password_hide_image_view"
