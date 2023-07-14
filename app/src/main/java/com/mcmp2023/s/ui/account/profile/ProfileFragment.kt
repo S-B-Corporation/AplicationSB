@@ -37,6 +37,10 @@ class ProfileFragment : Fragment() {
         binding.productsButton.setOnClickListener{
             findNavController().navigate(R.id.action_profileFragment_to_userProductsFragment)
         }
+
+        binding.profileBackArrowImageView.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_forYouFragment)
+        }
     }
 
 }
