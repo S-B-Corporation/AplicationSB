@@ -218,30 +218,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forgot_password_text_view" />
 
-        <TextView
-            android:id="@+id/optionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/login_or_text"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
-
 
         <TextView
             android:id="@+id/haveAccountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/big_gap"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/have_account_text"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

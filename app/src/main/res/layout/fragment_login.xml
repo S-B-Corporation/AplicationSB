@@ -157,40 +157,29 @@
             app:layout_constraintTop_toBottomOf="@+id/password_field_layout" />
 
         <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/login_or_text"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/action_login_btn" />
-
-        <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="@dimen/big_gap"
             android:layout_marginEnd="19dp"
             android:text="@string/not_have_account_text"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/action_register_text_view"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/action_login_btn" />
 
         <TextView
             android:id="@+id/action_register_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
             android:text="@string/register_me_text"
             android:textColor="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toTopOf="@+id/textView5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,11 @@ package com.mcmp2023.s.ui.admin.adminusers
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,7 +50,9 @@ class AdminUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userViewModel.onGetUsers()
         setRecyclerView(view)
+        observeStatus()
         addListenners()
     }
 
@@ -65,17 +67,9 @@ class AdminUserFragment : Fragment() {
         })
 
         binding.usersRecyclerView.adapter = adapter
-        displayUsers()
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private fun displayUsers() {
-        CoroutineScope(Dispatchers.Main).launch {
-            adapter.setData(userViewModel.getUsers())
-        }
-        adapter.notifyDataSetChanged()
-    }
 
     private fun showSelectedUser(user: UserModel) {
         profileViewModel.setSelectedUser(user)
@@ -87,7 +81,7 @@ class AdminUserFragment : Fragment() {
         CoroutineScope(Dispatchers.Main).launch {
             val token = app.getToken()
             userViewModel.deleteUser("Bearer $token", user.ID)
-            adapter.setData(userViewModel.getUsers())
+            userViewModel.onGetUsers()
             adapter.notifyDataSetChanged()
         }
     }
@@ -95,6 +89,28 @@ class AdminUserFragment : Fragment() {
     private fun addListenners(){
         binding.actionAdminSettings.setOnClickListener{
             findNavController().navigate(R.id.action_adminUserFragment_to_adminSettingsFragment)
+        }
+    }
+
+    private fun observeStatus() {
+        userViewModel.status.observe(viewLifecycleOwner) { status ->
+            handleUiStatus(status)
+        }
+    }
+
+    private fun handleUiStatus(status: AdminUserUiStatus){
+        when(status){
+            is AdminUserUiStatus.Error -> {
+                Toast.makeText(requireContext(), "An error has occurred", Toast.LENGTH_SHORT).show()
+            }
+            is AdminUserUiStatus.ErrorWithMessage -> {
+                Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
+            }
+            is AdminUserUiStatus.Success -> {
+                adapter.setData(status.response)
+                adapter.notifyDataSetChanged()
+            }
+            else -> {}
         }
     }
 

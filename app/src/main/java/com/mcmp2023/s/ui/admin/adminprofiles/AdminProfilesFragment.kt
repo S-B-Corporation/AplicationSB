@@ -1,11 +1,10 @@
 package com.mcmp2023.s.ui.admin.adminprofiles
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -14,10 +13,6 @@ import com.mcmp2023.s.data.db.models.Product
 import com.mcmp2023.s.databinding.FragmentAdminprofilesViewBinding
 import com.mcmp2023.s.ui.admin.adminprofiles.profilerecyclerview.ProfileRecyclerViewAdapter
 import com.mcmp2023.s.ui.admin.adminprofiles.viewmodel.AdminProfilesViewModel
-import com.mcmp2023.s.ui.admin.adminusers.viewmodel.AdminUserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class AdminProfilesFragment : Fragment() {
 
@@ -45,7 +40,9 @@ class AdminProfilesFragment : Fragment() {
         binding.actionBackfpLogin.setOnClickListener {
             findNavController().popBackStack()
         }
+        viewModel.onGetProductsByUser()
         setRecyclerView(view)
+        observeStatus()
 
     }
 
@@ -57,22 +54,35 @@ class AdminProfilesFragment : Fragment() {
         }
 
         binding.profileRecyclerView.adapter = adapter
-        displayProducts()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private fun displayProducts() {
-        CoroutineScope(Dispatchers.Main).launch {
-            adapter.setData(viewModel.getProductsByUser())
-            val product = viewModel.getProductsByUser()
-            Log.d("product_profile", product.toString())
-        }
-        adapter.notifyDataSetChanged()
-    }
 
     private fun showSelectedProduct(product: Product) {
         viewModel.setSelectedProduct(product)
         findNavController()
     }
+
+    private fun observeStatus() {
+        viewModel.status.observe(viewLifecycleOwner) { status ->
+            handleUiStatus(status)
+        }
+    }
+
+    private fun handleUiStatus(status: AdminProfilesUiStatus){
+        when(status){
+            is AdminProfilesUiStatus.Error -> {
+                Toast.makeText(requireContext(), "An error has occurred", Toast.LENGTH_SHORT).show()
+            }
+            is AdminProfilesUiStatus.ErrorWithMessage -> {
+                Toast.makeText(requireContext(), status.message, Toast.LENGTH_SHORT).show()
+            }
+            is AdminProfilesUiStatus.Success -> {
+                adapter.setData(status.response)
+                adapter.notifyDataSetChanged()
+            }
+            else -> {}
+        }
+    }
+
 
 }

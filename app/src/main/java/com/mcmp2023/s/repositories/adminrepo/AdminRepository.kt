@@ -9,9 +9,19 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class AdminRepository (private val api: UserService) {
-    suspend fun getUsers() : List<UserModel> {
-        val response = api.getUsers()
-        return response
+    suspend fun getUsers() : ApiResponse<List<UserModel>> {
+        try {
+            val response: List<UserModel> = api.getUsers()
+
+            return ApiResponse.Success(response)
+        } catch (e: HttpException) {
+            if (e.code() == 400) {
+                return ApiResponse.ErrorWithMessage("wrong data")
+            }
+            return ApiResponse.Error(e)
+        } catch (e: IOException) {
+            return ApiResponse.Error(e)
+        }
     }
 
     suspend fun getUserProducts(token: String) : ApiResponse<List<Product>> {
@@ -29,9 +39,18 @@ class AdminRepository (private val api: UserService) {
         }
     }
 
-    suspend fun getProductsByUser(id: String) : List<Product> {
-        val response = api.getProducts(id)
-        return response.products
+    suspend fun getProductsByUser(id: String) : ApiResponse<List<Product>> {
+        try {
+            val response = api.getProducts(id)
+            return ApiResponse.Success(response.products)
+        } catch (e: HttpException) {
+            if (e.code() == 400) {
+                return ApiResponse.ErrorWithMessage("wrong data")
+            }
+            return ApiResponse.Error(e)
+        } catch (e: IOException) {
+            return ApiResponse.Error(e)
+        }
     }
 
     suspend fun deleteUsers(token: String, id: String) {
