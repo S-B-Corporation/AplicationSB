@@ -12,13 +12,14 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/category_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/default_gap"
             android:background="@drawable/gradient_stroke"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            android:adjustViewBounds="true"
             tools:src="@drawable/world_icon" />
 
 
@@ -29,7 +30,7 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="24sp"
             tools:text="Ropa y calzado de hombre" />
 
     </LinearLayout>

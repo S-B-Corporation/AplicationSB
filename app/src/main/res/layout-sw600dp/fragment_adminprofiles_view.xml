@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/action_backfp_login"
-                android:layout_width="35dp"
-                android:layout_height="36dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="@dimen/default_gap"
                 android:layout_marginTop="@dimen/default_gap"
                 android:contentDescription="@string/arrow_back_content_description"
@@ -41,7 +41,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/profile_text"
                 android:textColor="@color/white"
-                android:textSize="40sp"
+                android:textSize="50sp"
                 app:layout_constraintEnd_toStartOf="@+id/user_image_view"
                 app:layout_constraintHorizontal_bias="0.067"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +49,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/user_image_view"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="@dimen/default_gap"
                 android:scaleType="centerCrop"
@@ -62,11 +62,11 @@
             <TextView
                 android:id="@+id/profile_name_text_view"
                 android:layout_width="0dp"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_gap"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:text="User name" />
@@ -84,6 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_name_text_view"
                 tools:itemCount="4"
+                android:padding="@dimen/medium_gap"
                 tools:listitem="@layout/product_item" />
 
 
