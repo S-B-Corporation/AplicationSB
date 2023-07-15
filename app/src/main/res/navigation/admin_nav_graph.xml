@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_nav_graph"
+    app:startDestination="@id/adminUserFragment">
+
+    <fragment
+        android:id="@+id/adminUserFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminusers.AdminUserFragment"
+        android:label="AdminUserFragment" >
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminProfilesFragment"
+            app:destination="@id/adminProfilesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminProfilesFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminprofiles.AdminProfilesFragment"
+        android:label="AdminProfilesFragment" />
+</navigation>

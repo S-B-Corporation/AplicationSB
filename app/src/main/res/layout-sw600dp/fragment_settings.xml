@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.account.settings.SettingsFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/setting_bak_arrow_image_view"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/big_gap"
+                android:layout_marginTop="@dimen/big_gap"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_gap"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/settings_text"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="@+id/setting_bak_arrow_image_view"
+                app:layout_constraintStart_toEndOf="@+id/setting_bak_arrow_image_view"
+                app:layout_constraintTop_toTopOf="@+id/setting_bak_arrow_image_view" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/big_gap"
+                android:background="@drawable/rounded_top_corners_layout_style"
+                android:backgroundTint="@color/white"
+                android:paddingStart="2dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_top_corners_layout_style"
+                    android:backgroundTint="@color/primary"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/big_gap">
+
+                    <Button
+                        android:id="@+id/acion_restorepassword"
+                        android:layout_width="400dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableLeft="@drawable/user_icon"
+                        android:fontFamily="@font/roboto_bold"
+                        android:foreground="@drawable/white_button_border"
+                        android:text="@string/change_password_text"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:layout_width="400dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableLeft="@drawable/world_icon"
+                        android:fontFamily="@font/roboto_bold"
+                        android:foreground="@drawable/white_button_border"
+                        android:text="@string/language_text"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/action_logout"
+                        android:layout_width="400dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableLeft="@drawable/sign_out_icon"
+                        android:fontFamily="@font/roboto_bold"
+                        android:foreground="@drawable/white_button_border"
+                        android:text="@string/log_out_text"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

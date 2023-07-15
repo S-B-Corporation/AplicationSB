@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/createAccount">
+    app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/createAccount"
-        android:name="com.mcmp2023.s.createAccount"
+        android:name="com.mcmp2023.s.ui.account.register.createAccount"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.mcmp2023.s.fragmentLogin"
+        android:name="com.mcmp2023.s.ui.account.login.fragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -25,16 +25,145 @@
             app:destination="@id/restorePasword"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_createAccount"
+            app:destination="@id/createAccount" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/restorePasword"
-        android:name="com.mcmp2023.s.restorePasword"
+        android:name="com.mcmp2023.s.ui.account.restorePassword.restorePasword"
         android:label="fragment_restore_pasword"
         tools:layout="@layout/fragment_restore_pasword" >
         <action
             android:id="@+id/action_restorePasword_to_fragmentLogin"
-            app:destination="@id/fragmentLogin"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_enter_anim" />
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/forYouFragment"
+        android:name="com.mcmp2023.s.ui.for_you.ForYouFragment"
+        android:label="fragment_for_you"
+        tools:layout="@layout/fragment_for_you" >
+        <action
+            android:id="@+id/action_forYouFragment_to_sellProductFragment"
+            app:destination="@id/sellProductFragment" />
+        <action
+            android:id="@+id/action_forYouFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_forYouFragment_to_productDescriptionFragment"
+            app:destination="@id/productDescriptionFragment" />
+
+    </fragment>
+    <!-- Mantienes los cambios de la primera rama -->
+    <fragment
+        android:id="@+id/sellProductFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.sellproduct.SellProductFragment"
+        android:label="SellProductFragment">
+        <action
+            android:id="@+id/action_sellProductFragment_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
+    </fragment>
+
+    <!-- Mantienes los cambios de la segunda rama -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mcmp2023.s.ui.account.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_userProductsFragment"
+            app:destination="@id/userProductsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
+    </fragment>
+
+    <!-- Mantienes los cambios de la segunda rama -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mcmp2023.s.ui.account.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_settingsFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDescriptionFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.descriptionproduct.ProductDescriptionFragment"
+        android:label="fragment_product_description"
+        tools:layout="@layout/fragment_product_description" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.mcmp2023.s.ui.account.forgotPassword.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_restorePasword"
+            app:destination="@id/restorePasword" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.mcmp2023.s.ui.start.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_createAccount"
+            app:destination="@id/createAccount" />
+        <action
+            android:id="@+id/action_startFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_forYouFragment"
+            app:destination="@id/forYouFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminUserFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminusers.AdminUserFragment"
+        android:label="AdminUserFragment" >
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminProfilesFragment"
+            app:destination="@id/adminProfilesFragment" />
+        <action
+            android:id="@+id/action_adminUserFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_adminUserFragment_to_adminSettingsFragment"
+            app:destination="@id/adminSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminProfilesFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminprofiles.AdminProfilesFragment"
+        android:label="AdminProfilesFragment" >
+        <action
+            android:id="@+id/action_adminProfilesFragment_to_adminUserFragment"
+            app:destination="@id/adminUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProductsFragment"
+        android:name="com.mcmp2023.s.ui.for_you.product.userProducts.UserProductsFragment"
+        android:label="fragment_user_products"
+        tools:layout="@layout/fragment_user_products" />
+    <fragment
+        android:id="@+id/adminSettingsFragment"
+        android:name="com.mcmp2023.s.ui.admin.adminsettings.AdminSettingsFragment"
+        android:label="fragment_admin_settings"
+        tools:layout="@layout/fragment_admin_settings" >
+        <action
+            android:id="@+id/action_adminSettingsFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
     </fragment>
 </navigation>

@@ -1,167 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main_header_selector">
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mcmp2023.s.ui.account.restorePassword.viewmodel.RestorePasswordViewmodel" />
+    </data>
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Restablecer contrasena"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="35dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="356dp"
-        android:src="@drawable/arrowback"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="356dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Escribe la direccion de tu correo electronico asociado a tu cuenta y crea tu nueva contrasena y luego confirma el cambio!"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextFieldRestoreEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Correo Electronico"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        android:background="@drawable/main_header_selector">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <Button
+            android:id="@+id/action_restore_password_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/default_gap"
+            android:backgroundTint="#FF018786"
+            android:fontFamily="@font/roboto_bold"
+            android:onClick="@{() -> viewmodel.onRestorePassword()}"
+            android:text="@string/reset_password_text"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_gap"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/reset_password_text"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="@+id/action_backtologin"
+            app:layout_constraintTop_toBottomOf="@+id/action_backtologin" />
+
+        <ImageView
+            android:id="@+id/action_backtologin"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/medium_gap"
+            android:src="@drawable/arrow_back"
+            android:contentDescription="@string/arrow_back_content_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/greeting_text_reset_password"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/TextFieldRestoreEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/emailicon"
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/user_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:minHeight="56dp"
+            android:padding="10dp"
+            android:text="@={viewmodel.email}"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextFieldCodeVerify"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Codigo de verificacion"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextFieldRestoreEmail"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/TextFieldCodeVerify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/codeicon"
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:background="@drawable/et_style"
+            android:drawableStart="@drawable/hashtag_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/code_hint"
+            android:inputType="numberPassword"
+            android:minHeight="56dp"
+            android:padding="10dp"
+            android:text="@={viewmodel.code}"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextFieldRestoreEmail" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextFieldNewPass"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Nueva contraseña"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextFieldCodeVerify"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/passwordicon"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:background="@drawable/et_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextFieldCodeVerify">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/TextFieldNewPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.80"
+                android:background="@color/transparent"
+                android:drawableStart="@drawable/password_icon"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:minHeight="56dp"
+                android:padding="10dp"
+                android:text="@={viewmodel.newPassword}"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextFieldConfirmPass"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_gap"
-        android:layout_marginTop="@dimen/default_gap"
-        android:layout_marginEnd="@dimen/default_gap"
-        android:hint="Confirmar contraseña"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextFieldNewPass"
-        tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/newPassword_hide_image_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/small_gap"
+                android:layout_weight="0.1"
+                android:src="@drawable/eye_closed_icon" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/passwordicon"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:layout_marginStart="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:background="@drawable/et_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/TextFieldConfirmPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.80"
+                android:background="@color/transparent"
+                android:drawableStart="@drawable/password_icon"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/confirm_password_hint"
+                android:inputType="textPassword"
+                android:minHeight="56dp"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
-    <Button
-        android:id="@+id/arrowbackwards"
-        android:layout_width="271dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#FF018786"
-        android:text="Reestablecer e ingresar"
-        android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextFieldConfirmPass" />
+            <ImageView
+                android:id="@+id/ConfirmNewPassword_hide_image_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/small_gap"
+                android:layout_weight="0.1"
+                android:src="@drawable/eye_closed_icon" />
+
+        </LinearLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

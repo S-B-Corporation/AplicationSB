@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.account.welcome.profile.ProfileFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/profile_back_arrow_image_view"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/default_gap"
+                android:layout_marginTop="@dimen/default_gap"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="@dimen/default_gap"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_back_arrow_image_view"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                android:src="@drawable/user_icon" />
+
+            <TextView
+                android:id="@+id/username_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_gap"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_icon"
+                app:layout_constraintStart_toStartOf="@+id/profile_icon"
+                app:layout_constraintTop_toBottomOf="@+id/profile_icon"
+                tools:text="David Perlera" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:background="@drawable/rounded_top_corners_layout_style"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username_text_view">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="2dp"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/medium_gap"
+                    android:background="@drawable/rounded_top_corners_layout_style"
+                    android:backgroundTint="@color/primary"
+                    android:elevation="4dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/products_button"
+                        android:layout_width="400dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:drawableEnd="@drawable/right_arrow"
+                        android:textAlignment="textStart"
+                        android:text="@string/products_text"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        android:textColor="@color/white"
+                        android:foreground="@drawable/white_button_border"/>
+
+                    <Button
+                        android:id="@+id/saves_button"
+                        android:layout_width="400dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:foreground="@drawable/white_button_border"
+                        android:drawableEnd="@drawable/right_arrow"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:text="@string/saves_text"
+                        android:textSize="24sp"
+                        android:textColor="@color/white"/>
+
+                    <Button
+                        android:id="@+id/settings_button"
+                        android:layout_width="400dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="@dimen/small_gap"
+                        android:layout_marginBottom="@dimen/small_gap"
+                        android:foreground="@drawable/white_button_border"
+                        android:drawableEnd="@drawable/right_arrow"
+                        android:textAlignment="textStart"
+                        android:text="@string/settings_text"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>
