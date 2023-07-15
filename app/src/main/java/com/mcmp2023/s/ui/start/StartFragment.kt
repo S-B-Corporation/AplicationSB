@@ -44,18 +44,14 @@ class StartFragment : Fragment() {
                 findNavController().navigate(R.id.action_startFragment_to_adminUserFragment)
             }
         }else{
-            return
+            view.findViewById<Button>(R.id.btn_start_to_login).setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_createAccount)
+            }
         }
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.tertiary)
-        }
-
-        view.findViewById<Button>(R.id.btn_start_to_login).setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_createAccount)
+            activity?.window?.statusBarColor =
+                ContextCompat.getColor(requireContext(), R.color.tertiary)
         }
     }
-
-
-
 }

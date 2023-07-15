@@ -156,6 +156,7 @@ class SellProductFragment : Fragment() {
 
             if (imageBitmap != null) {
                 sellProductViewmodel.setBitmap(imageBitmap)
+                binding.imageForProduct?.setImageBitmap(imageBitmap)
             } else {
                 Toast.makeText(requireContext(), "No has seleccionado ninguna imagen para subir", Toast.LENGTH_LONG).show()
             }

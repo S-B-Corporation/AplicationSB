@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.mcmp2023.s.R
 import com.mcmp2023.s.databinding.FragmentProductDescriptionBinding
@@ -43,6 +44,10 @@ class ProductDescriptionFragment : Fragment() {
         setViewModel()
         renderImage(viewModel.imageUrl, view )
         redirectWhatsApp(viewModel.phoneNumber, viewModel.title)
+
+        binding.arrowBackIcon.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
     private fun setViewModel() {
         binding.viewmodel = viewModel
@@ -71,16 +76,4 @@ class ProductDescriptionFragment : Fragment() {
             }
         }
     }
-   /*
-    private fun Favorites() {
-        val isFavorite = productViewModel.favoriteProduct.contains(product)
-        if (isFavorite) {
-            binding.descriptionFavImageView.setImageResource(R.drawable.baseline_bookmark)
-        } else {
-            binding.de.setImageResource(R.drawable.bookmark)
-        }
-    }
-
-
-    */
 }

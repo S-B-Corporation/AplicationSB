@@ -15,6 +15,7 @@ import com.mcmp2023.s.data.db.models.Category
 import com.mcmp2023.s.databinding.FragmentCategoriesBinding
 import com.mcmp2023.s.ui.for_you.categories.recyclerview.CategoryRecyclerViewAdapter
 import com.mcmp2023.s.ui.for_you.categories.viewmodel.CategoriesViewModel
+import com.mcmp2023.s.ui.for_you.product.recyclerview_product.viewmodel.ProductRecyclerViewModel
 
 class CategoriesFragment : Fragment() {
 
@@ -22,8 +23,12 @@ class CategoriesFragment : Fragment() {
 
     private lateinit var adapter: CategoryRecyclerViewAdapter
 
-    private val viewModel : CategoriesViewModel by activityViewModels {
+    private val CategoryViewModel : CategoriesViewModel by activityViewModels {
         CategoriesViewModel.Factory
+    }
+
+    private val ProductViewModel : ProductRecyclerViewModel by activityViewModels {
+        ProductRecyclerViewModel.Factory
     }
 
     override fun onCreateView(
@@ -53,12 +58,13 @@ class CategoriesFragment : Fragment() {
     }
 
     private fun displayCategories() {
-        adapter.setData(viewModel.getCategories())
+        adapter.setData(CategoryViewModel.getCategories())
         adapter.notifyDataSetChanged()
     }
 
     private fun showSelectedCategory(category: Category) {
-        viewModel.setSelectedCategory(category)
+        CategoryViewModel.setSelectedCategory(category)
+        ProductViewModel.clearProducts()
         findNavController().navigate(R.id.action_categoriesFragment_to_productRecyclerViewFragment)
     }
 

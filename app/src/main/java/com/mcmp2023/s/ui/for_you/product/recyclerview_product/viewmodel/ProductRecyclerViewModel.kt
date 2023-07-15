@@ -22,6 +22,8 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
 
     val favoriteProduct : MutableList<Product> = mutableListOf()
 
+    private val emptyList = mutableListOf<Product>()
+
     val products : LiveData<List<Product>> get() = _products
 
     var error = MutableLiveData<Int?>(null)
@@ -89,6 +91,10 @@ class ProductRecyclerViewModel(private val productRepository: ProductRepository)
 
     fun clearProductName() {
         productName = ""
+    }
+
+    fun clearProducts() {
+        _products.value = emptyList
     }
 
 

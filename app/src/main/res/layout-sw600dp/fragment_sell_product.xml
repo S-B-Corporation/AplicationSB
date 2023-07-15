@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -22,7 +23,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/title_text"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/big_gap"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:layout_marginEnd="@dimen/big_gap"
             android:background="@drawable/edit_text_sell_product"
             android:ems="10"
@@ -59,7 +60,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/category_text"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_edit_text_view" />
 
@@ -67,9 +68,9 @@
         <Spinner
             android:id="@+id/category_spinner_view"
             android:layout_width="0dp"
-            android:layout_height="75sp"
+            android:layout_height="75dp"
             android:layout_marginStart="@dimen/big_gap"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:layout_marginEnd="@dimen/big_gap"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +86,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/description_text"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category_spinner_view" />
 
@@ -94,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginStart="@dimen/big_gap"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:layout_marginEnd="@dimen/big_gap"
             android:background="@drawable/edit_text_sell_product"
             android:ems="10"
@@ -120,7 +121,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/phonenumber_text_view"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_edit_text_view" />
 
@@ -129,7 +130,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/big_gap"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:layout_marginEnd="@dimen/big_gap"
             android:background="@drawable/edit_text_sell_product"
             android:ems="10"
@@ -155,7 +156,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/price_text"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status_edit_text_view" />
 
@@ -164,7 +165,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/big_gap"
-            android:layout_marginTop="@dimen/medium_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:layout_marginEnd="@dimen/big_gap"
             android:background="@drawable/edit_text_sell_product"
             android:ems="10"
@@ -186,7 +187,7 @@
             style="@style/CardViewStyle"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="@dimen/medium_gap"
             android:layout_marginEnd="@dimen/small_gap"
             app:layout_constraintEnd_toStartOf="@+id/addmore_image_card"
             app:layout_constraintHorizontal_bias="0.5"
@@ -237,23 +238,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/default_gap">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/add_icon" />
+                    android:id="@+id/imageForProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/add_icon" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/add_more_text"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -263,7 +256,7 @@
             android:id="@+id/action_publish_product"
             android:layout_width="300dp"
             android:layout_height="75dp"
-            android:layout_marginTop="@dimen/big_gap"
+            android:layout_marginTop="@dimen/default_gap"
             android:backgroundTint="#FF018786"
             android:fontFamily="@font/roboto_bold"
             android:onClick="@{() -> viewmodel.onSellproduct()}"
